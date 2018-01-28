@@ -1,0 +1,20 @@
+.txt_title {
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color: #cc0000;
+	margin-left: 20px;
+	padding: 3px 6px;
+	font-weight: bold;
+}
+body{
+	opacity: 0;
+}
+@keyframes hidden{
+    from{opacity:1;}
+    to{opacity: 0;}
+}
+
+@keyframes showen{
+    from{opacity:0;}
+    to{opacity: 1;}
+}

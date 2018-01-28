@@ -1,0 +1,32 @@
+    #login{   
+	background-color: snow /*#87f8ff*/;
+	padding:10px;
+        position: absolute;   
+        top: 50%;   
+        left:50%;   
+        margin: -172px 0 0 -172px;   
+        width: 310px;   
+        height: 334px;   
+	box-shadow:0px 10px 20px /*#adfaff*/
+    }   
+    #login h1{   
+        color: #000000;   
+        font-size: 2em;   
+        margin: 0.67em 0;  
+        letter-spacing: 1px;   
+        text-align: center;   
+    }   
+
+	.reg{   
+        width: 300px;   
+        min-height: 20px;   
+        display: block;   
+        color: #000;   
+        padding: 9px 14px;   
+        font-size: 15px;   
+        line-height: normal;   
+        border-radius: 5px;   
+        margin: 0;   
+	text-decoration:none
+    }  
+

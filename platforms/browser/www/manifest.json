@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "漫游附中",
+  "short_name": "漫游附中",
+  "version": "io.xqqy.x1",
+  "description": "一个依靠地理位置介绍师大附中的应用",
+  "author": "xqqy",
+  "icons": [],
+  "start_url": "index.html"
+}

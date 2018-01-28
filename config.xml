@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.xqqy.x1" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>漫游附中</name>
+    <description>
+    一个依靠地理位置介绍师大附中的应用
+    </description>
+    <author email="xqqy189@hotmail.com" href="https://xqqy.github.io">
+        xqqy 
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-geolocation" spec="^3.0.0" />
+    <plugin name="cordova-plugin-dialogs" spec="^1.3.4" />
+    <engine name="android" spec="^6.4.0" />
+    <engine name="browser" spec="^5.0.1" />
+</widget>
