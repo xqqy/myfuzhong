@@ -36,7 +36,7 @@ story[4] = {//小花园
 	//目标位置纬度
 	longitude: 116.3793,
 	//目标位置经度
-	info: '小花园',
+	info: '',
 	done: '也没写呢<p style="text-indent:24px">总结自附中官网</p><br/><br/><br/><br/><br/><div id="buttom"></div>',
 }
 
@@ -72,7 +72,7 @@ function getPosition() {
 
 	function onSuccess(position) {
 		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
-		document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
+		//document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
 
 		if (story[localStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[localStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[localStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[localStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {
 			navigator.geolocation.clearWatch(watchID);

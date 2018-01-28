@@ -42,7 +42,7 @@ story[4] = {//小花园
 
 
 //返回
-document.addEventListener("backbutton", onBackKeyDown, false);
+
 
 function back(index) {
 	if (index == 1) {
@@ -72,7 +72,7 @@ function getPosition() {
 
 	function onSuccess(position) {
 		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
-		document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
+		//document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
 
 		if (story[localStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[localStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[localStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[localStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {
 			navigator.geolocation.clearWatch(watchID);
@@ -131,7 +131,7 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
-		document.addEventListener('pause', this.pause.bind(this), false);
+		document.addEventListener("backbutton", onBackKeyDown, false);
 	},
 
 	// deviceready Event Handler

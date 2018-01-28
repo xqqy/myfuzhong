@@ -42,7 +42,7 @@ story[4] = {//小花园
 
 
 //返回
-document.addEventListener("backbutton", onBackKeyDown, false);
+
 
 function back(index) {
 	if (index == 1) {
@@ -131,7 +131,7 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
-		document.addEventListener('pause', this.pause.bind(this), false);
+		document.addEventListener("backbutton", onBackKeyDown, false);
 	},
 
 	// deviceready Event Handler

@@ -1,11 +1,11 @@
 //全局变量
 var time = 31;
 //退出
-document.addEventListener("backbutton", onBackKeyDown, false);
 
 function onBackKeyDown(e) {
 	e.preventDefault();
-	document.location="../index.html"
+	//document.location="../index.html"
+	navigator.app.exitApp();
 }
 
 //地理服务倒计时
@@ -77,14 +77,15 @@ function game() {
 	document.body.addEventListener("animationend", function() {
 		document.location = "game.html";
 	});
-	document.body.style.animation = "hidden 0.5s forwards"
+	document.body.style.animation = "hidden 0.5s forwards";
 }
 
 var app = {
 	// Application Constructor
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
-		document.getElementById("game").addEventListener("click", game)
+		document.getElementById("game").addEventListener("click", game);
+		document.addEventListener("backbutton", onBackKeyDown, false);
 	},
 
 	// deviceready Event Handler

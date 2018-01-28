@@ -5,7 +5,7 @@ var time = 31;
 function onBackKeyDown(e) {
 	e.preventDefault();
 	//document.location="../index.html"
-	app.exitApp();
+	navigator.app.exitApp();
 }
 
 //地理服务倒计时
