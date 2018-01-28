@@ -5,7 +5,7 @@ document.addEventListener("backbutton", onBackKeyDown, false);
 
 function onBackKeyDown(e) {
 	e.preventDefault();
-	document.location="/index.html"
+	document.location="../index.html"
 }
 
 //地理服务倒计时
