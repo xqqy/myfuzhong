@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.xqqy.x1" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.xqqy.x1" version="2.1.2.0B" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -10,14 +10,14 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
-    <name>漫游附中</name>
+    <name>智慧附中</name>
     <description>
-    一个依靠地理位置介绍师大附中的应用
+    一个介绍师大附中的应用
     </description>
-    <author email="xqqy189@hotmail.com" href="https://xqqy.github.io">
+    <author email="app@xqqy11.top" href="https://app.xqqy11.top">
         xqqy 
     </author>
-    <content src="index.html" />
+    <content src="debug.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

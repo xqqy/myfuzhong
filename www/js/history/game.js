@@ -36,7 +36,7 @@ story[4] = {//小花园
 	//目标位置纬度
 	longitude: 116.3793,
 	//目标位置经度
-	info: '',
+	info: '小花园',
 	done: '也没写呢<p style="text-indent:24px">总结自附中官网</p><br/><br/><br/><br/><br/><div id="buttom"></div>',
 }
 
@@ -55,10 +55,7 @@ function back(index) {
 	}
 }
 
-function onBackKeyDown(e) {
-	e.preventDefault();
-	navigator.notification.confirm("", back, "您是指返回吗？", "是,否")
-}
+
 
 //地理服务
 
@@ -72,7 +69,7 @@ function getPosition() {
 
 	function onSuccess(position) {
 		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
-		//document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
+		document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp+'目标纬度'+story[localStorage.getItem("game")].latitude+'目标经度'+story[localStorage.getItem("game")].longitude);
 
 		if (story[localStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[localStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[localStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[localStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {
 			navigator.geolocation.clearWatch(watchID);
@@ -131,7 +128,7 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
-		document.addEventListener("backbutton", onBackKeyDown, false);
+		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 	},
 
 	// deviceready Event Handler
@@ -145,7 +142,7 @@ var app = {
 		if (!localStorage.getItem("game")) {
 			localStorage.setItem("game", "0");
 		}
-		if (localStorage.getItem("game") > 3) {
+		if (localStorage.getItem("game") > 4) {
 			document.location = "done.html";
 		}
 		document.getElementById("info").innerHTML = story[localStorage.getItem("game")].info; //获取到游戏进度
@@ -154,6 +151,10 @@ var app = {
 		getPosition();
 		return;
 	},
+	onBackKeyDown:function (e) {
+		e.preventDefault();
+		navigator.notification.confirm("", back, "您是指返回吗？", "是,否")
+	}
 
 };
 app.initialize();

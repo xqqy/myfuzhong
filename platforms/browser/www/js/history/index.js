@@ -1,11 +1,11 @@
 //全局变量
 var time = 31;
 //退出
-
-function onBackKeyDown(e) {
-	e.preventDefault();
-	//document.location="../index.html"
-	app.exitApp();
+function back(){
+	document.body.addEventListener("animationend", function() {
+		document.location = '../index.html';
+	})
+	document.body.style.animation = "hidden 0.3s forwards";
 }
 
 //地理服务倒计时
@@ -41,16 +41,16 @@ function getPosition() {
 		console.log('code:' + error.code + '\n' + 'info:' + error.message)
 		switch (error.code) {
 		case 1:
-			dialogAlert("错误", "你必须开启位置服务才能使用本应用！应用将退出", "确定", navigator.app.exitApp);
+			dialogAlert("错误", "你必须开启位置服务才能使用本应用！应用将退出", "确定", back);
 			break;
 		case 2:
-			dialogAlert("错误", "应用内部错误！提示信息:" + error.message, "确定", navigator.app.exitApp);
+			dialogAlert("错误", "应用内部错误！提示信息:" + error.message, "确定", back);
 			break;
 		case 3:
-			dialogAlert("错误", "获取地理位置超时！请在空阔地带使用并启动辅助定位", "确定", navigator.app.exitApp);
+			dialogAlert("错误", "获取地理位置超时！请在空阔地带使用并启动辅助定位", "确定", back);
 			break;
 		default:
-			dialogAlert("错误", '地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "确定", navigator.app.exitApp);
+			dialogAlert("错误", '地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "确定",back);
 		}
 		return;
 	}
@@ -85,7 +85,7 @@ var app = {
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
 		document.getElementById("game").addEventListener("click", game);
-		document.addEventListener("backbutton", onBackKeyDown, false);
+		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 	},
 
 	// deviceready Event Handler
@@ -101,41 +101,36 @@ var app = {
 		console.log('cordova加载完成');
 		getPosition();
 		dtme();
-		if (!localStorage.getItem("firstrun")) {
-			localStorage.setItem("firstrun", "2.0.0.0");
-			localStorage.setItem("now", "-1")
-			dialogAlert("欢迎", "这是您第一次使用这个APP，请阅读我们的使用说明和授权文件!");
-			document.location = '../about.html';
-		}
 	},
 
-	hidd: function(clsas) {
-		var clsss = document.getElementsByClassName(clsas)
-		var long = clsss.length;
-		var now = 0;
-		while (now < long) {
-			clsss[now].style.display = "none"
-			now += 1
-		}
-		return;
-	},
-
-	show: function(clsas) {
-		var clsss = document.getElementsByClassName(clsas)
-		var long = clsss.length;
-		var now = 0;
-		while (now < long) {
-			clsss[now].style.display = "block"
-			now += 1
-		}
-		return;
-	},
 	done: function() {
 		document.getElementById("h1").innerHTML = "游览附中";
 		this.hidd("ative1");
 		this.show("ative2");
-	}
+	},
+	onBackKeyDown: function (e) {
+		e.preventDefault();
+		back();
+	},
+	hidd:  function(clsas){
+        var clsss=document.getElementsByClassName(clsas)
+        var long=clsss.length;
+        var now=0;
+        while(now<long){
+            clsss[now].style.display="none"
+            now+=1
+        }
+        return;},
 
+    show:  function(clsas){
+        var clsss=document.getElementsByClassName(clsas)
+        var long=clsss.length;
+        var now=0;
+        while(now<long){
+            clsss[now].style.display="block"
+            now+=1
+        }
+        return;}
 
 
 };
