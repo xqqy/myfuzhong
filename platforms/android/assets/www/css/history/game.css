@@ -8,15 +8,6 @@
     font-weight: normal;
     font-style: normal;
   }
-@keyframes hidden{
-    from{opacity:1;}
-    to{opacity: 0;}
-}
-
-@keyframes showen{
-    from{opacity:0;}
-    to{opacity: 1;}
-}
 @keyframes doneen{
     0%{opacity:0;
     top: 150px}
@@ -24,9 +15,6 @@
         top: 150px}
     100%{opacity: 1;
     top: 0px}
-}
-body{
-    opacity:0;
 }
 #done{
     position:absolute;

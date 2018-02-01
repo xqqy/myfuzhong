@@ -84,8 +84,7 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
-		document.getElementById("game").addEventListener("click", game);
-		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
+		document.body.style.animation = "showen 0.3s forwards"
 	},
 
 	// deviceready Event Handler
@@ -95,7 +94,8 @@ var app = {
 
 	// Update DOM on a Received Event
 	ready: function() {
-		document.body.style.animation = "showen 0.3s forwards"
+		document.getElementById("game").addEventListener("click", game);
+		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 		this.hidd("ative0");
 		this.show("ative1");
 		console.log('cordova加载完成');

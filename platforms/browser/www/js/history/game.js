@@ -128,7 +128,6 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
-		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 	},
 
 	// deviceready Event Handler
@@ -138,6 +137,7 @@ var app = {
 
 	// Update DOM on a Received Event
 	ready: function() {
+		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 		console.log('cordova加载完成!');
 		if (!localStorage.getItem("game")) {
 			localStorage.setItem("game", "0");

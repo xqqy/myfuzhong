@@ -12,6 +12,7 @@ color:snow;
 body{
     height: 100%;
     width:100%;
+    opacity: 0;
 }
 .his{
     background: url("../img/history/done_1.jpg") no-repeat;

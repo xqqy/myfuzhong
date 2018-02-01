@@ -5,13 +5,13 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>登录</title>
     <link href="ionic/ionic.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+    <link href="css/basic.css" rel="stylesheet">
     <script src="ionic/ionic.js"></script>
     <script src="cordova.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/login.js"></script>
 </head>
 
-<body>
+<body ng-controller="main">
 
     <div class="bar bar-header bar-positive">
         <h1 class="title">登录</h1>
@@ -19,17 +19,15 @@
     <div class="content has-header">
         <div class="list list-inset">
             <label class="item item-input">
-                <input type="text" placeholder="7位学号">
+                <input type="text" placeholder="7位学号" id="UID">
             </label>
             <label class="item item-input">
-                <input type="password" placeholder="密码">
+                <input type="password" placeholder="密码" id="PSWD">
             </label>
         </div>
         <div class="padding">
-            <button class="button button-block button-balanced">登录</button>
-            <a href="xedni.html">
-                <button class="button button-block button-stable">游客访问</button>
-            </a>
+            <button class="button button-block button-balanced" id="login">登录</button>
+            <button class="button button-block button-stable" id="guest">游客访问</button>
         </div>
     </div>
 </body>

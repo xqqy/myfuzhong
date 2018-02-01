@@ -32,11 +32,11 @@ function imgready(){
 var app = {
 	// Application Constructor
 	initialize: function() {
-        localStorage.setItem("sphere","img/sphere/1.jpg")
         document.addEventListener('DeviceReady', this.ready.bind(this), false);
-        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
     },
     ready: function() {
+        localStorage.setItem("sphere","img/sphere/1.jpg")
+        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
         loadimg();
         document.getElementById("txt").style.animation="showen 0.3s forwards";
     },

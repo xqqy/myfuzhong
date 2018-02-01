@@ -6,15 +6,3 @@
 	padding: 3px 6px;
 	font-weight: bold;
 }
-body{
-	opacity: 0;
-}
-@keyframes hidden{
-    from{opacity:1;}
-    to{opacity: 0;}
-}
-
-@keyframes showen{
-    from{opacity:0;}
-    to{opacity: 1;}
-}
