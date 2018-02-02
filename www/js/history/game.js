@@ -31,7 +31,7 @@ story[3] = { //礼堂
 	info: '礼堂',
 	done: '<h1>附中现状</h1><img src="../img/history/game4_1.jpg"alt="附中全景图"height="100%"width="50%"/><p>目前，我校占地总面积22000平方米，总建筑面积21000平方米。操场占地6400平方米，200米跑道。学校图书馆藏书16万册，报刊310种。</p><p>学校现有高中24个班（含分校4个班），初中6个班，在校生1450人，外国留学生10人。全校现有教职工166人，其中任课教师111人，干部职工55人。任课教师中特级教师6人，高级教师56人；市区级学科带头人14人，市级青年骨干教师4人；教师中硕士研究生6人，研究生班结业30人。</p><p>北京师大附中建校98年来，历经风雨，精心办学，为国家培养了成千上万的优秀人才。师大附中在办学中不断探索、改革，积累了丰富的经验，在我国近现代教育发展的各个历史阶段，做出了自己的贡献。学校的发展受到了毛泽东、邓小平、江泽民三代党和国家领导人的关怀。1950年7月，毛泽东同志为我校亲笔书写校名；1987年邓小平同志为我校赵世炎烈士塑像题字；1996年10月，江泽民同志为我校书写了“育才兴国”的题词，这既是对我校的关怀与鼓励，更是赋予我校面向新世纪的重任。</p><p>附中悠久的历史，丰富的办学经验，饱含着我国近现代教育家的智慧和心血。在师大附中的历届领导、教师和学生的共同奋斗下，形成了爱国兴国、育人为本、严谨治学、师生平等、主动学习、全面发展的良好校风和光荣传统。随着社会的向前发展，我们要继续发扬附中在教育观念、管理体制、教育内容、教学方法等方面锐意改革、不断创新的精神，使师大附中逐步成为面向新世纪的基础教育改革基地，培养高素质人才的沃土。</p><h1>附中现代化历史</h1><p>1980年改建校舍。兴建教学大楼、实验楼、礼堂、食堂、大操场、学生宿舍楼、教师宿舍楼。</p><p>2001年1月12日国务院总理办公会决定：国家投资人民币3亿元对六所教育部在京直属高校附中（北京师大附中、二附中、实验中学、人大附中、北大附中、清华附中）进行扩招扩建，以满足广大人民群众对子女上好高中的愿望。</p><br><p>同年6月，综合教学楼结构建设基本完成。经市建委组织专家评估，初步通过长城杯评奖验收；我校礼堂设计参加北京市建筑设计研究院优秀设计评奖，经专家实地考察和评定，获一等奖。</p><p>2003年3月21日，和平门中学正式并入北京师大附中。并入后，师大附中校园占地面积达到66亩，学生达到72班3295人，教职工（含离退休人员）超过500人。</p><h1>附中礼堂大事记</h1><img src="../img/history/game4_2.jpg"alt="礼堂"height="100%"width="50%"/><p>2005年12月6日，著名地理特级教师王树声先生从教55周年教育教学研讨会在附中礼堂隆重举行。来自全国的同行欢聚一堂共同庆贺。</p><p>2008年4月30日，距离北京奥运会开幕还有100天之际，初一年级全体师生在学校礼堂隆重举行奥运100天倒计时牌揭幕仪式。</p><p>2010年9月10日，西城区教师节庆祝大会在全国政协礼堂隆重举行。我校地理教研组韩英英老师荣获首届“霍懋征奖”。</p><p style="text-indent:24px">总结自附中官网</p><br/><br/><br/><br/><br/><div id="buttom"></div>',
 }
-story[4] = {//小花园
+story[4] = { //小花园
 	latitude: 39.8961,
 	//目标位置纬度
 	longitude: 116.3793,
@@ -46,7 +46,7 @@ story[4] = {//小花园
 
 function back(index) {
 	if (index == 1) {
-		document.body.addEventListener("animationend", function() {
+		document.body.addEventListener("animationend", function () {
 			document.location = 'index.html';
 		})
 		document.body.style.animation = "hidden 0.3s forwards";
@@ -69,7 +69,9 @@ function getPosition() {
 
 	function onSuccess(position) {
 		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
-		document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp+'目标纬度'+story[localStorage.getItem("game")].latitude+'目标经度'+story[localStorage.getItem("game")].longitude);
+		if (localStorage.getItem("debug")) {
+			document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + story[localStorage.getItem("game")].latitude + '目标经度' + story[localStorage.getItem("game")].longitude);
+		}
 
 		if (story[localStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[localStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[localStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[localStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {
 			navigator.geolocation.clearWatch(watchID);
@@ -77,16 +79,16 @@ function getPosition() {
 				localStorage.setItem("now", localStorage.getItem("game"));
 			}
 			document.getElementById("info").style.animation = "hidden 0.7s forwards";
-			setTimeout(()=> {
+			setTimeout(() => {
 				document.getElementById("done").style.display = "block"
 				document.getElementById("done").style.animation = "doneen 2s forwards"
 				document.getElementById("buttom").innerHTML = "<button id='next'>完成</button>"
 			}, 0.2);
 			document.getElementById("locate").innerHTML = "";
-			document.getElementById("buttom").addEventListener("click", ()=> {
+			document.getElementById("buttom").addEventListener("click", () => {
 				localStorage.setItem("game", parseInt(localStorage.getItem("game")) + 1);
 				document.body.style.animation = "hidden 0.5s forwards";
-				document.body.addEventListener("animationend", ()=> {
+				document.body.addEventListener("animationend", () => {
 					document.location = "game.html";
 				})
 			})
@@ -98,17 +100,17 @@ function getPosition() {
 
 		console.log('code:' + error.code + '\n' + 'info:' + error.message)
 		switch (error.code) {
-		case 1:
-			dialogAlert("错误", "你必须开启位置服务才能使用本应用！应用将退出", "确定", navigator.app.exitApp);
-			break;
-		case 2:
-			dialogAlert("错误", "应用内部错误！提示信息:" + error.message, "确定", navigator.app.exitApp);
-			break;
-		case 3:
-			dialogAlert("错误", "获取地理位置超时！位置更新可能不准确", "确定");
-			break;
-		default:
-			dialogAlert("错误", '地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "确定", navigator.app.exitApp);
+			case 1:
+				dialogAlert("你必须开启位置服务才能使用本应用！应用将退出", "错误", "确定", navigator.app.exitApp);
+				break;
+			case 2:
+				dialogAlert("应用内部错误！提示信息:" + error.message, "错误", "确定", navigator.app.exitApp);
+				break;
+			case 3:
+				dialogAlert("获取地理位置超时！位置更新可能不准确", "错误", "确定");
+				break;
+			default:
+				dialogAlert('地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "错误", "确定", navigator.app.exitApp);
 		}
 		return;
 	}
@@ -116,17 +118,18 @@ function getPosition() {
 
 //通知服务
 
-function dialogAlert(title = "错误", message, buttonname = "确定", callback = function() {
+function dialogAlert(message, title, buttonname, callback = function () {
 	return;
-}) {
+}) { //通知服务
+	title = title || "错误";
+	buttonname = buttonname || "确定";
 	navigator.notification.alert(message, callback, title, buttonname);
-
 }
 
 
 var app = {
 	// Application Constructor
-	initialize: function() {
+	initialize: function () {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
 	},
 
@@ -136,7 +139,7 @@ var app = {
 	// 'pause', 'resume', etc.
 
 	// Update DOM on a Received Event
-	ready: function() {
+	ready: function () {
 		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 		console.log('cordova加载完成!');
 		if (!localStorage.getItem("game")) {
@@ -151,7 +154,7 @@ var app = {
 		getPosition();
 		return;
 	},
-	onBackKeyDown:function (e) {
+	onBackKeyDown: function (e) {
 		e.preventDefault();
 		navigator.notification.confirm("", back, "您是指返回吗？", "是,否")
 	}

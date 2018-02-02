@@ -4,9 +4,8 @@ var app = {
         document.addEventListener('DeviceReady', this.ready.bind(this), false);
     },
     ready: function (){
-        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
-
         document.body.style.animation = "showen 0.3s forwards";
+        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
     },
     onBackKeyDown:function (e) {
         document.body.addEventListener("animationend", function() {

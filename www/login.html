@@ -1,4 +1,4 @@
-<html>
+<html ng-app="myapp">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,6 @@
 </head>
 
 <body ng-controller="main">
-
     <div class="bar bar-header bar-positive">
         <h1 class="title">登录</h1>
     </div>
@@ -28,6 +27,7 @@
         <div class="padding">
             <button class="button button-block button-balanced" id="login">登录</button>
             <button class="button button-block button-stable" id="guest">游客访问</button>
+            <ion-spinner icon="android" style="display:none;left:50%;position:relative;transform:translateX(-50%);" id="loading"></ion-spinner>
         </div>
     </div>
 </body>

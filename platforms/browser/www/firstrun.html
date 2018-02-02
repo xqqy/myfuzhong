@@ -9,10 +9,11 @@
     <script src="ionic/ionic.js"></script>
     <script src="cordova.js"></script>
     <script src="js/firstrun.js"></script>
+    <link href="css/basic.css" rel="stylesheet">
 </head>
 
 <body ng-app="ionicApp" ng-controller="SlideController">
-    <ion-slide-box active-slide="0" on-slide-changed="nextSlide()">
+    <ion-slide-box active-slide="0" on-slide-changed="nextSlide($index)">
         <ion-slide>
             <div class="box his">
                 <h1>百年附中

@@ -1,12 +1,5 @@
 //全局变量
 var time = 31;
-//退出
-function back(){
-	document.body.addEventListener("animationend", function() {
-		document.location = '../index.html';
-	})
-	document.body.style.animation = "hidden 0.3s forwards";
-}
 
 //地理服务倒计时
 
@@ -40,17 +33,17 @@ function getPosition() {
 
 		console.log('code:' + error.code + '\n' + 'info:' + error.message)
 		switch (error.code) {
-		case 1:
-			dialogAlert("错误", "你必须开启位置服务才能使用本应用！应用将退出", "确定", back);
-			break;
-		case 2:
-			dialogAlert("错误", "应用内部错误！提示信息:" + error.message, "确定", back);
-			break;
-		case 3:
-			dialogAlert("错误", "获取地理位置超时！请在空阔地带使用并启动辅助定位", "确定", back);
-			break;
-		default:
-			dialogAlert("错误", '地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "确定",back);
+			case 1:
+				dialogAlert("你必须开启位置服务才能使用本应用！应用将退出", "错误", "确定", back);
+				break;
+			case 2:
+				dialogAlert("应用内部错误！提示信息:" + error.message, "错误", "确定", back);
+				break;
+			case 3:
+				dialogAlert("获取地理位置超时！请在空阔地带使用并启动辅助定位", "错误", "确定", back);
+				break;
+			default:
+				dialogAlert('地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "错误", "确定", back);
 		}
 		return;
 	}
@@ -58,23 +51,25 @@ function getPosition() {
 
 //通知服务
 
-function dialogAlert(title = "错误", message, buttonname = "确定", callback = function() {
-	return;
-}) {
+function dialogAlert(message, title, buttonname, callback) { //通知服务
+	title = title || "错误";
+	buttonname = buttonname || "确定";
+	callback = callback || function () {
+		return;
+	}
 	navigator.notification.alert(message, callback, title, buttonname);
-
 }
 
 //开始动画
 
 function game() {
 	var g = parseInt(document.getElementById("select").value);
-	if (parseInt(localStorage.getItem("now"))+1 < g) {
-		dialogAlert("错误", "该章节尚未解锁");
+	if (parseInt(localStorage.getItem("now")) + 1 < g) {
+		dialogAlert("该章节尚未解锁");
 		return;
 	}
-	localStorage.setItem("game",g);
-	document.body.addEventListener("animationend", function() {
+	localStorage.setItem("game", g);
+	document.body.addEventListener("animationend", function () {
 		document.location = "game.html";
 	});
 	document.body.style.animation = "hidden 0.5s forwards";
@@ -82,8 +77,9 @@ function game() {
 
 var app = {
 	// Application Constructor
-	initialize: function() {
+	initialize: function () {
 		document.addEventListener('DeviceReady', this.ready.bind(this), false);
+		document.body.style.animation = "showen 0.3s forwards"
 	},
 
 	// deviceready Event Handler
@@ -92,10 +88,9 @@ var app = {
 	// 'pause', 'resume', etc.
 
 	// Update DOM on a Received Event
-	ready: function() {
+	ready: function () {
 		document.getElementById("game").addEventListener("click", game);
 		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
-		document.body.style.animation = "showen 0.3s forwards"
 		this.hidd("ative0");
 		this.show("ative1");
 		console.log('cordova加载完成');
@@ -103,34 +98,39 @@ var app = {
 		dtme();
 	},
 
-	done: function() {
+	done: function () {
 		document.getElementById("h1").innerHTML = "游览附中";
 		this.hidd("ative1");
 		this.show("ative2");
 	},
 	onBackKeyDown: function (e) {
 		e.preventDefault();
-		back();
+		document.body.addEventListener("animationend", function () {
+			document.location = '../index.html';
+		})
+		document.body.style.animation = "hidden 0.3s forwards";
 	},
-	hidd:  function(clsas){
-        var clsss=document.getElementsByClassName(clsas)
-        var long=clsss.length;
-        var now=0;
-        while(now<long){
-            clsss[now].style.display="none"
-            now+=1
-        }
-        return;},
+	hidd: function (clsas) {
+		var clsss = document.getElementsByClassName(clsas)
+		var long = clsss.length;
+		var now = 0;
+		while (now < long) {
+			clsss[now].style.display = "none"
+			now += 1
+		}
+		return;
+	},
 
-    show:  function(clsas){
-        var clsss=document.getElementsByClassName(clsas)
-        var long=clsss.length;
-        var now=0;
-        while(now<long){
-            clsss[now].style.display="block"
-            now+=1
-        }
-        return;}
+	show: function (clsas) {
+		var clsss = document.getElementsByClassName(clsas)
+		var long = clsss.length;
+		var now = 0;
+		while (now < long) {
+			clsss[now].style.display = "block"
+			now += 1
+		}
+		return;
+	}
 
 
 };

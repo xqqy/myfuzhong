@@ -1,1 +1,54 @@
-<script>document.location="login.html"</script>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>主页面</title>
+  <link href="ionic/ionic.css" rel="stylesheet">
+  <link href="css/basic.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <script src="ionic/ionic.js"></script>
+  <script src="cordova.js"></script>
+  <script src="js/index.js"></script>
+</head>
+
+<body ng-app="myapp" ng-controller="Controller">
+  <div class="bar bar-header has-tabs-top bar-positive">
+    <div class="h1 title">智慧附中</div>
+  </div>
+  <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+    <div class="tabs">
+      <a class="{{tab0}}" href="#" ng-click="pge(0)">
+        概览
+      </a>
+      <a class="{{tab1}}" href="#" ng-click="pge(1)">
+        生活
+      </a>
+      <a class="{{tab2}}" href="#" ng-click="pge(2)">
+        学习
+      </a>
+      <a class="{{tab3}}" href="#" ng-click="pge(3)">
+        设置
+      </a>
+    </div>
+  </div>
+  <div class="content has-subheader">
+    <ion-slide-box on-slide-changed="nextSlide($index)" active-slide="apage">
+      <ion-slide>
+        <h1>看通知、自动推荐</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>加入活动、查学时、游览附中</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>背古诗、查成绩</h1>
+      </ion-slide>
+      <ion-slide>
+        <h1>个人信息、登录、授权</h1>
+      </ion-slide>
+    </ion-slide-box>
+
+  </div>
+</body>
+
+</html>
