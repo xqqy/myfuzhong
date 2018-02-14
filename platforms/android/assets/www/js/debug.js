@@ -1,12 +1,6 @@
 function back(index) {
 	if (index == 1) {
-		document.body.addEventListener("animationend", function () {
-			document.body.addEventListener("animationend", function () {
 				navigator.app.exitApp();
-			});
-			document.body.style.animation = "hidden 0.3s forwards";
-		})
-		document.body.style.animation = "hidden 0.3s forwards";
 	} else {
 		return;
 	}

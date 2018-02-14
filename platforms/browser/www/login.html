@@ -4,32 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>登录</title>
-    <link href="ionic/ionic.css" rel="stylesheet">
     <link href="css/basic.css" rel="stylesheet">
-    <script src="ionic/ionic.js"></script>
+    <link href="css/login.css" rel="stylesheet">
+    <link href="libs/materialize.min.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <link href="libs/gicon.css" rel="stylesheet">
     <script src="cordova.js"></script>
+    <script src="libs/materialize.min.js"></script>
     <script src="js/login.js"></script>
 </head>
 
-<body ng-controller="main">
-    <div class="bar bar-header bar-positive">
-        <h1 class="title">登录</h1>
-    </div>
-    <div class="content has-header">
-        <div class="list list-inset">
-            <label class="item item-input">
-                <input type="text" placeholder="7位学号" id="UID">
-            </label>
-            <label class="item item-input">
-                <input type="password" placeholder="密码" id="PSWD">
-            </label>
+<body>
+    <nav class="nav-extended  light-blue">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">登录</a>
         </div>
-        <div class="padding">
-            <button class="button button-block button-balanced" id="login">登录</button>
-            <button class="button button-block button-stable" id="guest">游客访问</button>
-            <ion-spinner icon="android" style="display:none;left:50%;position:relative;transform:translateX(-50%);" id="loading"></ion-spinner>
+        <div class="nav-content" id="loading">
+            <div class="progress light-blue lighten-4">
+                <div class="indeterminate light-blue darken-1"></div>
+            </div>
         </div>
-    </div>
+    </nav>
+    <h2>欢迎</h2>
+    <form class="col s12" action="javascript:login()">
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="UID" type="text" required="required">
+                <label for="UID">7位学号</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="PSWD" type="password" required="required">
+                <label for="PSWD">密码</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action" id="login">登录
+            <i class="material-icons right">send</i>
+        </button>
+        <button class="waves-effect waves-light btn light-blue darken-2" id="guest">游客访问</button>
+    </form>
 </body>
 
 </html>

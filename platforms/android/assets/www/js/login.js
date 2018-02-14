@@ -16,11 +16,12 @@ function jump() { //动画跳转
 }
 
 function login() { //登录
+    document.getElementById("loading").style.display="block";
     if (document.getElementById("UID").value == "" || document.getElementById("PSWD").value == "") {
         dialogAlert("登录信息不完整");
+        document.getElementById("loading").style.display="none";
         return;
     }
-    document.getElementById("loading").style.display = "block";
     var req = new XMLHttpRequest;
     var doc = new FormData;
     doc.append("UID", document.getElementById("UID").value);
@@ -28,9 +29,15 @@ function login() { //登录
     req.open("post", localStorage.getItem("server") + "/api/login.php", true);
     req.onreadystatechange = function () {
         if (req.readyState == 4) {
+            document.getElementById("loading").style.display="none";
             if (req.status == 200) {
                 if (req.responseText.split(",")[0] == "done") {
-                    localStorage.setItem("token", req.responseText.split(",")[1])
+                    localStorage.setItem("uid",document.getElementById("UID").value);
+                    localStorage.setItem("token", req.responseText.split(",")[1]);
+                    localStorage.setItem("name", req.responseText.split(",")[2]);
+                    localStorage.setItem("card", req.responseText.split(",")[3]);
+                    localStorage.setItem("life", req.responseText.split(",")[4]);
+                    localStorage.setItem("cardtime",new Date().getTime())
                     jump();
                 } else {
                     dialogAlert(req.responseText);
@@ -42,10 +49,6 @@ function login() { //登录
             }
         }
     }
-    req.onerror = function () {
-        dialogAlert("内部错误(req.onerror)");
-        document.getElementById("loading").style.display = "none";
-    }
     req.send(doc);
 }
 
@@ -54,7 +57,7 @@ var app = {
     initialize: function () {
         document.addEventListener('DeviceReady', this.ready.bind(this), false);
         if (!localStorage.getItem("firstrun")) {
-            localStorage.setItem("firstrun", "2.2.0.0B");
+            localStorage.setItem("firstrun", "2.1.0.1B");
             localStorage.setItem("now", "-1");
             localStorage.setItem("server", "http://39.106.99.226")
             document.location = 'firstrun.html';
@@ -63,7 +66,6 @@ var app = {
     ready: function () {
         document.body.style.animation = "showen 0.3s forwards";
         document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
-        document.getElementById("login").addEventListener("click", login);
         document.getElementById("guest").addEventListener("click", jump);
     },
     onBackKeyDown: function (e) {
@@ -75,4 +77,3 @@ var app = {
     }
 }
 app.initialize();
-angular.module('myapp', ['ionic']).controller('main', function ($scope) {});

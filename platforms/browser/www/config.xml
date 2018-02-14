@@ -1,12 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.xqqy.x1" version="2.2.0.0B" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.xqqy.x1" version="2.1.0.1B" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>智慧附中</name>
-    <description>
-    一个介绍师大附中的应用
-    </description>
-    <author email="app@xqqy11.top" href="https://app.xqqy11.top">
-        xqqy 
-    </author>
+    <description>    一个介绍师大附中的应用    </description>
+    <author email="app@xqqy11.top" href="https://app.xqqy11.top">xqqy</author>
     <content src="debug.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -15,5 +11,8 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>To scan barcodes</string>
+    </edit-config>
     <preference name="Orientation" value="portrait" />
 </widget>

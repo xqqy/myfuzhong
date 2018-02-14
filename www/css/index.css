@@ -1,0 +1,40 @@
+iframe{
+    width: 99%;
+    height: inherit;
+}
+#top .tabs .indicator{
+    background-color: #e1f5fe;
+}
+#top .tabs .tab a{
+    color: #b3e5fc;
+}
+#top .tabs .tab a:hover,#top .tabs .tab a.active{
+    color:#e1f5fe;
+}
+#test-swipe-2 .tabs .indicator{
+    background-color: #4fc3f7;
+}
+#test-swipe-2 .tabs .tab a{
+    color: #81d4fa;
+}
+#test-swipe-2 .tabs .tab a:hover,#test-swipe-2 .tabs .tab a.active{
+    color:#4fc3f7;
+}
+.carousel{
+    height: 83%;
+}
+nav.nav-extended .nav-wrapper{
+    min-height: 50px;
+}
+nav .brand-logo{
+    font-size: 1.7rem;
+}
+nav.nav-extended .nav-wrapper{
+    min-height: 50px;
+}
+nav .brand-logo{
+    font-size: 1.7rem;
+}
+#loading{
+    display: none;
+}
