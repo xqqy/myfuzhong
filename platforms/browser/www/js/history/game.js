@@ -70,13 +70,13 @@ function getPosition() {
 	function onSuccess(position) {
 		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
 		if (localStorage.getItem("debug")) {
-			document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + story[localStorage.getItem("game")].latitude + '目标经度' + story[localStorage.getItem("game")].longitude);
+			document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + story[sessionStorage.getItem("game")].latitude + '目标经度' + story[sessionStorage.getItem("game")].longitude);
 		}
 
-		if (story[localStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[localStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[localStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[localStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {
+		if (story[sessionStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[sessionStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[sessionStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[sessionStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {
 			navigator.geolocation.clearWatch(watchID);
-			if (localStorage.getItem("game") > localStorage.getItem("now") || !localStorage.getItem("now")) {
-				localStorage.setItem("now", localStorage.getItem("game"));
+			if (sessionStorage.getItem("game") > localStorage.getItem("now") || !localStorage.getItem("now")) {
+				localStorage.setItem("now", sessionStorage.getItem("game"));
 			}
 			document.getElementById("info").style.animation = "hidden 0.7s forwards";
 			setTimeout(() => {
@@ -86,7 +86,7 @@ function getPosition() {
 			}, 0.2);
 			document.getElementById("locate").innerHTML = "";
 			document.getElementById("buttom").addEventListener("click", () => {
-				localStorage.setItem("game", parseInt(localStorage.getItem("game")) + 1);
+				sessionStorage.setItem("game", parseInt(sessionStorage.getItem("game")) + 1);
 				document.body.style.animation = "hidden 0.5s forwards";
 				document.body.addEventListener("animationend", () => {
 					document.location = "game.html";
@@ -142,14 +142,14 @@ var app = {
 	ready: function () {
 		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 		console.log('cordova加载完成!');
-		if (!localStorage.getItem("game")) {
-			localStorage.setItem("game", "0");
+		if (!sessionStorage.getItem("game")) {
+			sessionStorage.setItem("game", "0");
 		}
-		if (localStorage.getItem("game") > 4) {
+		if (sessionStorage.getItem("game") > 4) {
 			document.location = "done.html";
 		}
-		document.getElementById("info").innerHTML = story[localStorage.getItem("game")].info; //获取到游戏进度
-		document.getElementById("done").innerHTML = story[localStorage.getItem("game")].done;
+		document.getElementById("info").innerHTML = story[sessionStorage.getItem("game")].info; //获取到游戏进度
+		document.getElementById("done").innerHTML = story[sessionStorage.getItem("game")].done;
 		document.body.style.animation = "showen 0.5s forwards"
 		getPosition();
 		return;

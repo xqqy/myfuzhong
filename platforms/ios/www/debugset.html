@@ -1,0 +1,16 @@
+<html>
+<h1>存储检测</h1>
+<input type="text" placeholder="键" id="key">
+<input type="text" placeholder="值" id="value">
+<button id="yes">确定</button>
+<button id="check">按键查询</button>
+
+</html>
+<script>
+    document.getElementById("yes").addEventListener("click", function () {
+        localStorage.setItem(document.getElementById("key").value, document.getElementById("value").value);
+    });
+    document.getElementById("check").addEventListener("click", function () {
+        alert(localStorage.getItem(document.getElementById("key").value));
+    });
+</script>

@@ -2,7 +2,7 @@ function loadimg() {
     var div = document.getElementById('container');
     var PSV = new PhotoSphereViewer({
         // 全景图的完整路径
-        panorama: "img/sphere/1.jpg",
+        panorama: sessionStorage.getItem("sphere"),
 
         // 放全景图的元素
         container: div,
@@ -34,11 +34,10 @@ var app = {
     // Application Constructor
     initialize: function () {
         document.addEventListener('DeviceReady', this.ready.bind(this), false);
-
+        sessionStorage.setItem("sphere", "img/sphere/1.jpg")
     },
     ready: function () {
         document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
-        localStorage.setItem("sphere", "img/sphere/1.jpg")
         loadimg();
         document.getElementById("txt").style.animation = "showen 0.3s forwards";
     },

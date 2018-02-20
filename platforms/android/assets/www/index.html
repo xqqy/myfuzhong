@@ -7,7 +7,6 @@
   <link href="css/basic.css" rel="stylesheet">
   <link href="libs/materialize.min.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
-  <link href="libs/jquery.mobile-1.4.5.min.css" rel="stylesheet">
   <link href="libs/gicon.css" rel="stylesheet">
   <script src="cordova.js"></script>
   <script src="libs/materialize.min.js"></script>
@@ -51,17 +50,17 @@
 
 
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red" href="#" onclick="loc('scan.html')">
+    <a class="btn-floating btn-large red">
       <i class="large material-icons">dehaze</i>
     </a>
     <ul>
       <li>
-        <a class="btn-floating red">
+        <a class="btn-floating red" href="#" onclick="scan()">
           <i class="material-icons">crop_free</i>
         </a>
       </li>
       <li>
-        <a class="btn-floating yellow darken-1">
+        <a class="btn-floating yellow darken-1" href="#" onclick="loc('search.html')">
           <i class="material-icons">search</i>
         </a>
       </li>
@@ -71,7 +70,7 @@
         </a>
       </li>
       <li>
-        <a class="btn-floating blue">
+        <a class="btn-floating blue" href="#" onclick="loc('setting.html')">
           <i class="material-icons">settings</i>
         </a>
       </li>
@@ -80,4 +79,4 @@
 
 </body>
 
-</html>
+</html> 

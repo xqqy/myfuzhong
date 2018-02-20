@@ -52,14 +52,17 @@ function getPosition() {
 //通知服务
 
 function dialogAlert(message, title, buttonname, callback) { //通知服务
-	title = title || "错误";
-	buttonname = buttonname || "确定";
-	callback = callback || function () {
-		return;
-	}
-	navigator.notification.alert(message, callback, title, buttonname);
+    title = title || "错误";
+    buttonname = buttonname || "确定";
+    callback = callback || function () {
+        return;
+    }
+    if(navigator.notification){
+        navigator.notification.alert(message, callback, title, buttonname);
+    }else{
+        alert(message);
+    }
 }
-
 //开始动画
 
 function game() {
@@ -68,7 +71,7 @@ function game() {
 		dialogAlert("该章节尚未解锁");
 		return;
 	}
-	localStorage.setItem("game", g);
+	sessionStorage.setItem("game", g);
 	document.body.addEventListener("animationend", function () {
 		document.location = "game.html";
 	});

@@ -4,9 +4,12 @@ function dialogAlert(message, title, buttonname, callback) { //通知服务
     callback = callback || function () {
         return;
     }
-    navigator.notification.alert(message, callback, title, buttonname);
+    if(navigator.notification){
+        navigator.notification.alert(message, callback, title, buttonname);
+    }else{
+        alert(message);
+    }
 }
-
 function loc(ati) { //动画跳转
     document.body.addEventListener("animationend", function () {
         document.location = ati;
@@ -14,13 +17,67 @@ function loc(ati) { //动画跳转
     document.body.style.animation = "hidden 0.3s forwards";
 }
 
+function scan() {
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+            if (!result.cancelled) {
+                var first = result.text.split("?")[1];
+                if(!first){
+                    dialogAlert("二维码不正确");
+                    return;
+                }
+                var secend = first.split("&")[1];
+                var last = first.split("&")[2];
+                first = first.split("&")[0];
+                switch (first) {
+                    case "ative":
+                        sessionStorage.setItem("atid", secend);
+                        sessionStorage.setItem("atvalue", last);
+                        loc("ative.html");
+                        break;
+                    case "door":
+                        door(last);
+                        break;
+                    default:
+                        dialogAlert("二维码不正确");
+                }
+            }
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        }, {
+            preferFrontCamera: false, // iOS and Android
+            showFlipCameraButton: true, // iOS and Android
+            showTorchButton: true, // iOS and Android
+            torchOn: false, // Android, launch with the torch switched on (if available)
+            saveHistory: true, // Android, save scan history (default false)
+            prompt: "Place a barcode inside the scan area", // Android
+            resultDisplayDuration: 0, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+            formats: "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
+            orientation: "portrait", // Android only (portrait|landscape), default unset so it rotates with the device
+            disableAnimations: true, // iOS
+            disableSuccessBeep: false // iOS and Android
+        }
+    );
+}
+function logout(){
+    localStorage.setItem("token","")
+    localStorage.setItem("name","")
+    localStorage.setItem("card","")
+    localStorage.setItem("life","")
+    localStorage.setItem("uid","")
+    localStorage.setItem("cardtime","")
+    loc('login.html');
+}
 function reflash() {
     if (!localStorage.getItem("token")) {
         dialogAlert("您没有登录");
         return;
     }
     document.getElementById("loading").style.display = "block";
-    M.Tabs.init(document.getElementById("focus")).destroy()
+    if(document.getElementById("focus")){
+        M.Tabs.init(document.getElementById("focus")).destroy()
+    }
     var req = new XMLHttpRequest;
     var doc = new FormData;
     doc.append("UID", localStorage.getItem("uid"));
@@ -64,11 +121,15 @@ var app = {
     },
     ready: function () {
         if (localStorage.getItem("token")) {
+            var outdate= new Date().getTime() -1800000;//每半小时刷新
+            if(parseInt(localStorage.getItem("cardtime"))<outdate){
+                reflash();
+            }
             document.getElementById("test-swipe-1").innerHTML = localStorage.getItem("card");
             document.getElementById("test-swipe-2").innerHTML = localStorage.getItem("life");
             M.Tabs.init(document.getElementById("focus"), {})
         } else {
-            document.getElementById("test-swipe-1").innerHTML = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你作为游客登录</p></div><div class="card-action"><a href="#"onclick="loc("' + "'" + 'login.html' + "'" + ')">切换用户</a></div></div></div><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">了解附中</span><p>你可以通过下方选项来了解附中</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'history/index.html' + "'" + ')">游览附中</a><a href="#"onclick="loc(' + "'" + 'sphere.html' + "'" + ')">全景导览</a></div></div></div></div>';
+            document.getElementById("test-swipe-1").innerHTML = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你作为游客登录</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'login.html' + "'" + ')">切换用户</a></div></div></div><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">了解附中</span><p>你可以通过下方选项来了解附中</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'history/index.html' + "'" + ')">游览附中</a><a href="#"onclick="loc(' + "'" + 'sphere.html' + "'" + ')">全景导览</a></div></div></div></div>';
             document.getElementById("test-swipe-2").innerHTML = '<div class="row"><div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>'
         }
         M.FloatingActionButton.init(document.querySelector('.fixed-action-btn'), {

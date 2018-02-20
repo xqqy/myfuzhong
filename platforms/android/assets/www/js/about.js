@@ -20,7 +20,11 @@ var app = {
 	onBackKeyDown: function (e) {
 		e.preventDefault();
 		document.body.addEventListener("animationend", function () {
-			document.location = "index.html";
+			if(localStorage.getItem("loged")){
+				document.location = "setting.html";
+			}else{
+				document.location="firstrun.html"
+			}
 		});
 		document.body.style.animation = "hidden 0.3s forwards";
 	}
