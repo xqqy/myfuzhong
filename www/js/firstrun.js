@@ -5,6 +5,13 @@ function jump() { //动画跳转
   });
   document.body.style.animation = "hidden 0.3s forwards";
 }
+function back(index) {
+	if (index == 1) {
+				navigator.app.exitApp();
+	} else {
+		return;
+	}
+}
 var app = {
   // Application Constructor
   initialize: function () {
@@ -14,16 +21,17 @@ var app = {
     document.body.style.animation = "showen 0.3s forwards";
     document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
     if (!localStorage.getItem("firstrun")) {
-      localStorage.setItem("firstrun", "2.2.2.0B");
+      localStorage.setItem("firstrun", "2.3.1.6");
       localStorage.setItem("now", "-1");
       localStorage.setItem("worker", "true");
       localStorage.setItem("server", "http://39.106.99.226")
+      localStorage.setItem("now", "-1");
     }
     document.getElementById("start").addEventListener("click",jump)
   },
   onBackKeyDown: function (e) {
     e.preventDefault();
-    document.location = "debug.html"
-  }
+navigator.notification.confirm("", back, "您是指退出吗？", "是,否")
+}
 }
 app.initialize();

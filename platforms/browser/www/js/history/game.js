@@ -82,7 +82,7 @@ function getPosition() {
 			setTimeout(() => {
 				document.getElementById("done").style.display = "block"
 				document.getElementById("done").style.animation = "doneen 2s forwards"
-				document.getElementById("buttom").innerHTML = "<button id='next'>完成</button>"
+				document.getElementById("buttom").innerHTML = "<button id='next' class='btn waves-effect waves-light light-blue darken-1'>完成</button>"
 			}, 0.2);
 			document.getElementById("locate").innerHTML = "";
 			document.getElementById("buttom").addEventListener("click", () => {

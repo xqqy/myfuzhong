@@ -43,7 +43,6 @@ function flash() {
     }
 
 }
-
 function dialogAlert(message, title, buttonname, callback) { //通知服务
     title = title || "错误";
     buttonname = buttonname || "确定";

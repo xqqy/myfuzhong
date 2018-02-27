@@ -47,10 +47,11 @@ body {
 
 /* Portrait layout (default) */
 .app {
+    box-sizing:  content-box;
     background:url(../../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
-    top:17%;
+    top:30%;
     height:50px;                   /* text area height */
     width:225px;                   /* text area width */
     text-align:center;
@@ -120,19 +121,19 @@ h1 {
 
 #game{
     position:absolute;
-    left: 50%;
-    top:  55%;
-    width: 100px;
+    left: 46%;
+    top:  70%;
+    width: 120px;
     height: 50px;
-    margin-left: -50px;
+    margin-left: -46px;
 }
 #select{
     position:absolute;
-    left: 50%;
-    top:  45%;
-    width: 100px;
+    left: 46%;
+    top:  60%;
+    width: 120px;
     height: 30px;
-    margin-left: -50px;
+    margin-left: -46px;
 }
 .bottom{
     position:absolute;

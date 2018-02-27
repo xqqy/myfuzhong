@@ -7,10 +7,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-geolocation": {
+  "phonegap-plugin-barcodescanner": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-geolocation@^3.0.0"
+      "id": "https://github.com/phonegap/phonegap-plugin-barcodescanner"
     },
     "is_top_level": true,
     "variables": {}
@@ -23,10 +23,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "phonegap-plugin-barcodescanner": {
+  "cordova-plugin-geolocation": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/phonegap/phonegap-plugin-barcodescanner"
+      "id": "cordova-plugin-geolocation@4.0.1"
     },
     "is_top_level": true,
     "variables": {}

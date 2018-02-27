@@ -17,7 +17,7 @@ function get(e) {//获取列表
     data.append("UID",e.data[2]);
     data.append("TOKEN",e.data[3]);
     var xhr = new XMLHttpRequest;
-    xhr.open("post", e.data[1] + "/api/score.php", true);
+    xhr.open("post", e.data[1] + "/api/exam.php", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {

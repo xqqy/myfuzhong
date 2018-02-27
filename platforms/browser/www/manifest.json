@@ -4,9 +4,9 @@
   "name": "智慧附中",
   "short_name": "智慧附中",
   "version": "io.xqqy.x1",
-  "description": "一个介绍师大附中的应用",
+  "description": "校内学生及来访者的门户应用",
   "author": "xqqy",
   "icons": [],
   "orientation": "portrait",
-  "start_url": "debug.html"
+  "start_url": "index.html"
 }

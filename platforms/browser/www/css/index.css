@@ -11,13 +11,13 @@ iframe{
 #top .tabs .tab a:hover,#top .tabs .tab a.active{
     color:#e1f5fe;
 }
-#test-swipe-2 .tabs .indicator{
+#test-swipe-2 .tabs .indicator,#test-swipe-3 .tabs .indicator{
     background-color: #4fc3f7;
 }
-#test-swipe-2 .tabs .tab a{
+#test-swipe-2 .tabs .tab a,#test-swipe-3 .tabs .tab a{
     color: #81d4fa;
 }
-#test-swipe-2 .tabs .tab a:hover,#test-swipe-2 .tabs .tab a.active{
+#test-swipe-2 .tabs .tab a:hover,#test-swipe-2 .tabs .tab a.active,#test-swipe-3 .tabs .tab a:hover,#test-swipe-3 .tabs .tab a.active{
     color:#4fc3f7;
 }
 .carousel{

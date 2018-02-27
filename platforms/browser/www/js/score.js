@@ -1,7 +1,7 @@
 if (window.Worker && localStorage.getItem("webworker")) {//检测是否支持多线程
     console.log("webworker is on");
     var worker;
-    worker = new Worker("/www/js/search_worker.js");
+    worker = new Worker("/www/js/score_worker.js");
     worker.onmessage = function (e) {
         document.getElementById("list").innerHTML = e.data;
     }
@@ -11,7 +11,7 @@ if (window.Worker && localStorage.getItem("webworker")) {//检测是否支持多
     data.append("UID",localStorage.getItem("uid"));
     data.append("TOKEN",localStorage.getItem("token"));
     var xhr = new XMLHttpRequest;
-    xhr.open("post", localStorage.getItem("server") + "/api/score.php", true);
+    xhr.open("post", localStorage.getItem("server") + "/api/exam.php", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {

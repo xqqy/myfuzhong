@@ -28,10 +28,11 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="UTF-8">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link href="../libs/materialize.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../css/history/index.css">
         <link href="../css/basic.css" rel="stylesheet">
         
@@ -41,7 +42,7 @@
     </head>
     <body>
         <div class="app">
-            <h1 id="h1">附中历史-加载中</h1>
+            <h1 id="h1">漫游附中小游戏-加载中</h1>
             <div id="ative" class="blink">
                 <p class="event ative0">cordova正在准备</p>
                 <p class="event ative1" id="dtme">定位中</p>
@@ -49,16 +50,19 @@
             </div>
         </div>
         <div class="ative2 all">
-            <select name="select" id="select">
-                <option value="0" selected="selected">第一章</option>
-                <option value="1">第二章</option>
-                <option value="2">第三章</option>
-                <option value="3">第四章</option>
-                <option value="4">第五章</option>
-            </select>
-            <button id="game" class="button button-stable">开始</button>
+                <a class='dropdown-trigger btn waves-effect waves-light light-blue darken-1' href='#' data-target='dropdown1' id="select">关卡选择</a>
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
+                  <li><a href="#!" onclick="cls(0)">第一关</a></li>
+                  <li><a href="#!" onclick="cls(1)">第二关</a></li>
+                  <li><a href="#!" onclick="cls(2)">第三关</a></li>
+                  <li><a href="#!" onclick="cls(3)">第四关</a></li>
+                  <li><a href="#!" onclick="cls(4)">第五关</a></li>
+                </ul>
+            <button id="game" class="btn waves-effect waves-light light-blue darken-1">开始</button>
         <script type="text/javascript" src="../cordova.js"></script>
         <script type="text/javascript" src="../js/history/index.js"></script>
+        <script type="text/javascript" src="../libs/materialize.min.js"></script>
     </div>
     </body>
 </html>

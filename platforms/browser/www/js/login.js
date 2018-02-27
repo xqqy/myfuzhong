@@ -41,6 +41,7 @@ function login() { //登录
                     localStorage.setItem("name", req.responseText.split(",")[2]);
                     localStorage.setItem("card", req.responseText.split(",")[3]);
                     localStorage.setItem("life", req.responseText.split(",")[4]);
+                    localStorage.setItem("sctab", req.responseText.split(",")[5]);
                     localStorage.setItem("cardtime",new Date().getTime())
                     jump();
                 } else {
@@ -61,7 +62,7 @@ var app = {
     initialize: function () {
         document.addEventListener('DeviceReady', this.ready.bind(this), false);
         if (!localStorage.getItem("firstrun")) {
-            localStorage.setItem("firstrun", "2.2.1.0B");
+            localStorage.setItem("firstrun", "2.3.0.2");
             localStorage.setItem("now", "-1");
             localStorage.setItem("server", "http://39.106.99.226")
             document.location = 'firstrun.html';
@@ -71,6 +72,7 @@ var app = {
         document.body.style.animation = "showen 0.3s forwards";
         document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
         document.getElementById("guest").addEventListener("click", jump);
+        document.getElementById("login").addEventListener("click", login);
     },
     onBackKeyDown: function (e) {
         e.preventDefault();

@@ -1,0 +1,4 @@
+#Tue Feb 27 23:31:50 CST 2018
+base.0=/home/xqqy/node/x1/platforms/android/app/build/intermediates/transforms/dex/release/0
+renamed.0=classes.dex
+file.0=/home/xqqy/node/x1/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex

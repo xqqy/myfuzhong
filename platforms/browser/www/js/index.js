@@ -17,7 +17,7 @@ function loc(ati) { //动画跳转
     document.body.style.animation = "hidden 0.3s forwards";
 }
 
-function scan() {
+function scan() {//二维码扫描
     cordova.plugins.barcodeScanner.scan(
         function (result) {
             if (!result.cancelled) {
@@ -35,8 +35,9 @@ function scan() {
                         sessionStorage.setItem("atvalue", last);
                         loc("ative.html");
                         break;
-                    case "door":
-                        door(last);
+                    case "vr":
+                        sessionStorage.setItem("sphere",secend);
+                        loc("sphere.html")
                         break;
                     default:
                         dialogAlert("二维码不正确");
@@ -60,23 +61,24 @@ function scan() {
         }
     );
 }
-function logout(){
-    localStorage.setItem("token","")
-    localStorage.setItem("name","")
-    localStorage.setItem("card","")
-    localStorage.setItem("life","")
-    localStorage.setItem("uid","")
-    localStorage.setItem("cardtime","")
+function logout(){//登出
+    localStorage.removeItem("token")
+    localStorage.removeItem("name")
+    localStorage.removeItem("card")
+    localStorage.removeItem("life")
+    localStorage.removeItem("uid")
+    localStorage.removeItem("cardtime")
     loc('login.html');
 }
-function reflash() {
+function reflash() {//刷新
     if (!localStorage.getItem("token")) {
         dialogAlert("您没有登录");
         return;
     }
     document.getElementById("loading").style.display = "block";
     if(document.getElementById("focus")){
-        M.Tabs.init(document.getElementById("focus")).destroy()
+        M.Tabs.init(document.getElementById("focus")).destroy();
+        M.Tabs.init(document.getElementById("sctabs")).destroy();
     }
     var req = new XMLHttpRequest;
     var doc = new FormData;
@@ -92,10 +94,13 @@ function reflash() {
                     localStorage.setItem("name", req.responseText.split(",")[2]);
                     localStorage.setItem("card", req.responseText.split(",")[3]);
                     localStorage.setItem("life", req.responseText.split(",")[4]);
+                    localStorage.setItem("sctab", req.responseText.split(",")[5]);
                     localStorage.setItem("cardtime", new Date().getTime());
                     document.getElementById("test-swipe-1").innerHTML = localStorage.getItem("card");
                     document.getElementById("test-swipe-2").innerHTML = localStorage.getItem("life");
-                    M.Tabs.init(document.getElementById("focus"), {})
+                    document.getElementById("sctab").innerHTML=localStorage.getItem("sctab")
+                    M.Tabs.init(document.getElementById("focus"), {});
+                    M.Tabs.init(document.getElementById("sctabs"), {});
                 } else {
                     dialogAlert(req.responseText);
                     document.getElementById("loading").style.display = "none";
@@ -107,6 +112,20 @@ function reflash() {
         }
     }
     req.send(doc);
+}
+function xcs(atid,atvalue){//跳转到小程序
+    sessionStorage.setItem("atid",atid);
+    if(atvalue){
+        sessionStorage.setItem("atvalue",atvalue)
+    }
+    loc("ative.html")
+}
+function back(index) {
+	if (index == 1) {
+				navigator.app.exitApp();
+	} else {
+		return;
+	}
 }
 var app = {
     // Application Constructor
@@ -127,10 +146,13 @@ var app = {
             }
             document.getElementById("test-swipe-1").innerHTML = localStorage.getItem("card");
             document.getElementById("test-swipe-2").innerHTML = localStorage.getItem("life");
-            M.Tabs.init(document.getElementById("focus"), {})
+            document.getElementById("sctab").innerHTML=localStorage.getItem("sctab")
+            M.Tabs.init(document.getElementById("focus"), {});
+            M.Tabs.init(document.getElementById("sctabs"), {});
         } else {
-            document.getElementById("test-swipe-1").innerHTML = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你作为游客登录</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'login.html' + "'" + ')">切换用户</a></div></div></div><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">了解附中</span><p>你可以通过下方选项来了解附中</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'history/index.html' + "'" + ')">游览附中</a><a href="#"onclick="loc(' + "'" + 'sphere.html' + "'" + ')">全景导览</a></div></div></div></div>';
-            document.getElementById("test-swipe-2").innerHTML = '<div class="row"><div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>'
+            document.getElementById("test-swipe-1").innerHTML = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你作为游客登录</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'login.html' + "'" + ')">切换用户</a></div></div></div><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">了解附中</span><p>你可以通过下方选项来了解附中</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'history/index.html' + "'" + ')">漫游附中</a><a href="#"onclick="loc(' + "'" + 'vr.html' + "'" + ')">全景导览</a></div></div></div></div>';
+            document.getElementById("test-swipe-2").innerHTML = '<div class="row"><div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>';
+            document.getElementById("test-swipe-3").innerHTML = '<div class="row"><div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>'
         }
         M.FloatingActionButton.init(document.querySelector('.fixed-action-btn'), {
             hoverEnabled: false
@@ -138,15 +160,12 @@ var app = {
         var instance = M.Tabs.init(document.getElementById("slide"), {
             swipeable: true
         });
-        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
+        document.addEventListener("", this.onBackKeyDown.bind(this), "您是指退出吗？", "是,否");
         document.body.style.animation = "showen 0.3s forwards";
     },
     onBackKeyDown: function (e) {
         e.preventDefault();
-        document.body.addEventListener("animationend", function () {
-            document.location = 'debug.html';
-        })
-        document.body.style.animation = "hidden 0.3s forwards";
+		navigator.notification.confirm("", back, "您是指退出吗？", "是,否")
     }
 }
 app.initialize();

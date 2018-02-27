@@ -10,13 +10,13 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "io.xqqy.x1"
     },
     "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "io.xqqy.x1"
     },
-    "phonegap-plugin-barcodescanner": {
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "io.xqqy.x1"
     }
   },

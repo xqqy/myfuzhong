@@ -1,6 +1,6 @@
 //全局变量
 var time = 31;
-
+var clss=0;
 //地理服务倒计时
 
 function dtme() {
@@ -11,6 +11,9 @@ function dtme() {
 		setTimeout("dtme()", 1000);
 	}
 	return;
+}
+function cls(va){
+	clss=va;
 }
 
 //地理服务
@@ -34,16 +37,16 @@ function getPosition() {
 		console.log('code:' + error.code + '\n' + 'info:' + error.message)
 		switch (error.code) {
 			case 1:
-				dialogAlert("你必须开启位置服务才能使用本应用！应用将退出", "错误", "确定", back);
+				dialogAlert("你必须开启位置服务才能使用本应用！游戏将退出", "错误", "确定", app.onBackKeyDown);
 				break;
 			case 2:
-				dialogAlert("应用内部错误！提示信息:" + error.message, "错误", "确定", back);
+				dialogAlert("应用内部错误！提示信息:" + error.message, "错误", "确定", app.onBackKeyDown);
 				break;
 			case 3:
-				dialogAlert("获取地理位置超时！请在空阔地带使用并启动辅助定位", "错误", "确定", back);
+				dialogAlert("获取地理位置超时！请在空阔地带使用并启动辅助定位", "错误", "确定", app.onBackKeyDown);
 				break;
 			default:
-				dialogAlert('地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "错误", "确定", back);
+				dialogAlert('地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "错误", "确定", app.onBackKeyDown);
 		}
 		return;
 	}
@@ -66,7 +69,7 @@ function dialogAlert(message, title, buttonname, callback) { //通知服务
 //开始动画
 
 function game() {
-	var g = parseInt(document.getElementById("select").value);
+	var g = parseInt(clss);
 	if (parseInt(localStorage.getItem("now")) + 1 < g) {
 		dialogAlert("该章节尚未解锁");
 		return;
@@ -92,6 +95,7 @@ var app = {
 
 	// Update DOM on a Received Event
 	ready: function () {
+		M.Dropdown.init(document.querySelector('.dropdown-trigger'),{})
 		document.getElementById("game").addEventListener("click", game);
 		document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
 		this.hidd("ative0");
@@ -102,7 +106,7 @@ var app = {
 	},
 
 	done: function () {
-		document.getElementById("h1").innerHTML = "游览附中";
+		document.getElementById("h1").innerHTML = "漫游附中小游戏";
 		this.hidd("ative1");
 		this.show("ative2");
 	},
