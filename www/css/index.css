@@ -21,7 +21,7 @@ iframe{
     color:#4fc3f7;
 }
 .carousel{
-    height: 83%;
+    height: inherit;
 }
 nav.nav-extended .nav-wrapper{
     min-height: 50px;

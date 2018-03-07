@@ -150,9 +150,9 @@ var app = {
             M.Tabs.init(document.getElementById("focus"), {});
             M.Tabs.init(document.getElementById("sctabs"), {});
         } else {
-            document.getElementById("test-swipe-1").innerHTML = '<div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你作为游客登录</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'login.html' + "'" + ')">切换用户</a></div></div></div><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">了解附中</span><p>你可以通过下方选项来了解附中</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'history/index.html' + "'" + ')">漫游附中</a><a href="#"onclick="loc(' + "'" + 'vr.html' + "'" + ')">全景导览</a></div></div></div></div>';
-            document.getElementById("test-swipe-2").innerHTML = '<div class="row"><div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>';
-            document.getElementById("test-swipe-3").innerHTML = '<div class="row"><div class="row"><div class="col s12 m6"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>'
+            document.getElementById("test-swipe-1").innerHTML = '<div class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你作为游客登录</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'login.html' + "'" + ')">切换用户</a></div></div></div><div class="col s12 m3"><div class="card"><div class="card-content"><span class="card-title">了解附中</span><p>你可以通过下方选项来了解附中</p></div><div class="card-action"><a href="#"onclick="loc(' + "'" + 'history/index.html' + "'" + ')">漫游附中</a><a href="#"onclick="loc(' + "'" + 'vr.html' + "'" + ')">全景导览</a></div></div></div></div>';
+            document.getElementById("test-swipe-2").innerHTML = '<div class="row"><div class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>';
+            document.getElementById("test-swipe-3").innerHTML = '<div class="row"><div class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><span class="card-title">登录信息</span><p>你没有登录，因而不能查看本部分</p></div><div class="card-action"><a href="#"onclick="loc(' + "'login.html'" + ')">登录</a></div></div></div></div></div>'
         }
         M.FloatingActionButton.init(document.querySelector('.fixed-action-btn'), {
             hoverEnabled: false
@@ -161,6 +161,8 @@ var app = {
             swipeable: true
         });
         document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
+        document.getElementById("tabs").style.height = window.innerHeight - 98 + "px";
+        document.getElementsByClassName("tabs-content")[0].style.height = "inherit";
         document.body.style.animation = "showen 0.3s forwards";
     },
     onBackKeyDown: function (e) {

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.xqqy.x1" version="2.3.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.xqqy.x1" version="2.3.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>智慧附中</name>
     <description>校内学生及来访者的门户应用</description>
     <author email="app@xqqy11.top" href="https://app.xqqy11.top">xqqy</author>
