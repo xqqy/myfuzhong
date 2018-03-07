@@ -43,6 +43,9 @@ function xhr() {
 }
 
 function afative() { //关注活动
+    if(!localStorage.getItem("token")){
+        dialogAlert("你没有登录")
+    }
     var data = new FormData;
     data.append("UID", localStorage.getItem("uid"));
     data.append("TOKEN", localStorage.getItem("token"));
@@ -67,6 +70,9 @@ function afative() { //关注活动
 }
 
 function rfative() { //关注活动
+    if(!localStorage.getItem("token")){
+        dialogAlert("你没有登录")
+    }
     var data = new FormData;
     data.append("UID", localStorage.getItem("uid"));
     data.append("TOKEN", localStorage.getItem("token"));
