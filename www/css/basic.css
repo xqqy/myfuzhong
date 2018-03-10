@@ -1,14 +1,14 @@
-@keyframes hidden{
-    from{opacity:1;}
-    to{opacity: 0;}
-}
+    @keyframes hidden{
+        from{opacity:1;}
+        to{opacity: 0;}
+    }
 
-@keyframes showen{
-    from{opacity:0;}
-    to{opacity: 1;}
-}
-body{ 
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-}
+    @keyframes showen{
+        from{opacity:0;}
+        to{opacity: 1;}
+    }
+    body{ 
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }

@@ -19,12 +19,18 @@ function xhr() {
                         case "-1":
                             document.getElementById("iframe").style.height = window.innerHeight - 104 + "px";
                             document.getElementById("iframe").srcdoc = xhr.responseText.split("$")[2];
-                            document.getElementById("buttons").style.display = "block";
+                            document.getElementById("buttons").className = "ativeb";
                             if (xhr.responseText.split("$")[3] == "1") {
                                 document.getElementById("focus").innerHTML = "取消关注"
                                 document.getElementById("focus").addEventListener("click", rfative)
                             } else {
                                 document.getElementById("focus").addEventListener("click", afative)
+                            }
+                            if (xhr.responseText.split("$")[4] == "0") {
+                                document.getElementById("join").innerHTML = "加入活动"
+                                document.getElementById("join").addEventListener("click", jative)
+                            } else {
+                                document.getElementById("join").className+=" disabled";
                             }
                             break;
                         default:
@@ -69,7 +75,7 @@ function afative() { //关注活动
     xhr.send(data)
 }
 
-function rfative() { //关注活动
+function rfative() { //取消关注活动
     if(!localStorage.getItem("token")){
         dialogAlert("你没有登录")
     }
@@ -96,6 +102,32 @@ function rfative() { //关注活动
     xhr.send(data)
 }
 
+function jative(){
+    if(!localStorage.getItem("token")){
+        dialogAlert("你没有登录")
+    }
+    var data = new FormData;
+    data.append("UID", localStorage.getItem("uid"));
+    data.append("TOKEN", localStorage.getItem("token"));
+    data.append("ATID", sessionStorage.getItem("atid"));
+    var xhr = new XMLHttpRequest;
+    xhr.open("post",localStorage.getItem("server")+"/api/jative.php", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                if (xhr.responseText == "done") {
+                    localStorage.setItem("cardtime","0");
+                    dialogAlert("加入成功，已为你自动关注此活动","成功","确定",function(){location.reload();})
+                } else {
+                    dialogAlert(xhr.responseText)
+                }
+            } else {
+                dialogAlert("网络错误，HTTP代码：" + xhr.status)
+            }
+        }
+    }
+    xhr.send(data)
+}
 
 function dialogAlert(message, title, buttonname, callback) { //通知服务
     title = title || "错误";

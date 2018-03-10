@@ -17,7 +17,7 @@ function loc(ati) { //动画跳转
     document.body.style.animation = "hidden 0.3s forwards";
 }
 
-function scan() {//二维码扫描
+/*function scan() {//二维码扫描
     cordova.plugins.barcodeScanner.scan(
         function (result) {
             if (!result.cancelled) {
@@ -60,7 +60,7 @@ function scan() {//二维码扫描
             disableSuccessBeep: false // iOS and Android
         }
     );
-}
+}*/
 function logout(){//登出
     localStorage.removeItem("token")
     localStorage.removeItem("name")

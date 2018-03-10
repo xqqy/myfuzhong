@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.xqqy.x1" version="2.3.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.xqqy.x1" version="2.3.3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>智慧附中</name>
     <description>校内学生及来访者的门户应用</description>
     <author email="app@xqqy11.top" href="https://app.xqqy11.top">xqqy</author>
@@ -16,13 +16,9 @@
         <allow-intent href="market:*" />
         <icon src="icon.png" />
     </platform>
-    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-        <string>To scan barcodes</string>
-    </edit-config>
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="phonegap-plugin-barcodescanner" spec="~7.0.2" />
     <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="android" spec="^7.0.0" />
 </widget>
