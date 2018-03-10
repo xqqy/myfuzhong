@@ -41,7 +41,7 @@ function login() { //登录
                     localStorage.setItem("name", req.responseText.split(",")[2]);
                     localStorage.setItem("card", req.responseText.split(",")[3]);
                     localStorage.setItem("life", req.responseText.split(",")[4]);
-                    localStorage.setItem("sctab", req.responseText.split(",")[5]);
+                    localStorage.setItem("learn", req.responseText.split(",")[5]);
                     localStorage.setItem("cardtime",new Date().getTime())
                     jump();
                 } else {

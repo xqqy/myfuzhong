@@ -21,11 +21,11 @@ var app = {
     document.body.style.animation = "showen 0.3s forwards";
     document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
     if (!localStorage.getItem("firstrun")) {
-      localStorage.setItem("firstrun", "2.3.3.1");
+      localStorage.setItem("firstrun", "2.3.4.0");
       localStorage.setItem("now", "-1");
       localStorage.setItem("worker", "true");
       localStorage.setItem("server", "http://39.106.99.226")
-      localStorage.setItem("now", "-1");
+      localStorage.setItem("aliyun", "https://a1-oss.oss-cn-beijing.aliyuncs.com");
     }
     document.getElementById("start").addEventListener("click",jump)
   },

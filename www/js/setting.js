@@ -29,6 +29,9 @@ var app = {
         if(localStorage.getItem("worker")){
             document.getElementById("worker").checked=true;
         }
+        if(localStorage.getItem("aliyun_oss")){
+            document.getElementById("aliyun_oss").checked=true;
+        }
             document.getElementById("debug").checked=false;
         document.body.style.animation = "showen 0.3s forwards";
     },

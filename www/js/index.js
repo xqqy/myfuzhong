@@ -94,11 +94,11 @@ function reflash() {//刷新
                     localStorage.setItem("name", req.responseText.split(",")[2]);
                     localStorage.setItem("card", req.responseText.split(",")[3]);
                     localStorage.setItem("life", req.responseText.split(",")[4]);
-                    localStorage.setItem("sctab", req.responseText.split(",")[5]);
+                    localStorage.setItem("learn", req.responseText.split(",")[5]);
                     localStorage.setItem("cardtime", new Date().getTime());
                     document.getElementById("test-swipe-1").innerHTML = localStorage.getItem("card");
                     document.getElementById("test-swipe-2").innerHTML = localStorage.getItem("life");
-                    document.getElementById("sctab").innerHTML=localStorage.getItem("sctab")
+                    document.getElementById("test-swipe-3").innerHTML=localStorage.getItem("learn");
                     M.Tabs.init(document.getElementById("focus"), {});
                     M.Tabs.init(document.getElementById("sctabs"), {});
                 } else {
@@ -146,7 +146,7 @@ var app = {
             }
             document.getElementById("test-swipe-1").innerHTML = localStorage.getItem("card");
             document.getElementById("test-swipe-2").innerHTML = localStorage.getItem("life");
-            document.getElementById("sctab").innerHTML=localStorage.getItem("sctab")
+            document.getElementById("test-swipe-3").innerHTML=localStorage.getItem("learn")
             M.Tabs.init(document.getElementById("focus"), {});
             M.Tabs.init(document.getElementById("sctabs"), {});
         } else {
