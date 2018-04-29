@@ -13,13 +13,16 @@ function dialogAlert(message, title, buttonname, callback) { //通知服务
     }
 }
 function get(e) {//获取列表
+    var data=new FormData;
+    data.append("UID",e.data[2]);
+    data.append("TOKEN",e.data[3]);
     var xhr = new XMLHttpRequest;
-    xhr.open("get", e.data[1] + "/api/search.php", true);
+    xhr.open("post", e.data[1], true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                if (xhr.responseText.split(",")[0] == "done") {
-                    list = xhr.responseText.split(",");
+                if (xhr.responseText.split("/meow/")[0] == "done") {
+                    list = xhr.responseText.split("/meow/");
                     all = list.length
                     onmsg(e)
                 } else {
@@ -32,7 +35,7 @@ function get(e) {//获取列表
             }
         }
     }
-    xhr.send();
+    xhr.send(data);
 }
 onmessage = onmsg;
 function onmsg(e) {
@@ -43,10 +46,10 @@ function onmsg(e) {
     var now = 1,
         ret = "";
     while (now < all) {
-        if (list[now+1].toUpperCase().indexOf(e.data[0].toUpperCase()) > -1) {
-            ret+='<a href="#" class="collection-item" onclick="ati('+"'"+list[now]+"'"+')">'+list[now+1]+'</a>';
+        if (list[now+2].toUpperCase().indexOf(document.getElementById("search").value.toUpperCase()) > -1) {
+            ret+='<a href="#" class="collection-item" onclick="ati('+"'"+list[now+1]+"'"+','+"'"+list[now]+"'"+')">'+list[now+2]+'</a>';
         }
-        now += 2;
+        now += 3;
     }
     postMessage(ret);
 };

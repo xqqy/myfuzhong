@@ -89,12 +89,12 @@ function reflash() {//刷新
         if (req.readyState == 4) {
             document.getElementById("loading").style.display = "none";
             if (req.status == 200) {
-                if (req.responseText.split(",")[0] == "done") {
-                    localStorage.setItem("token", req.responseText.split(",")[1]);
-                    localStorage.setItem("name", req.responseText.split(",")[2]);
-                    localStorage.setItem("card", req.responseText.split(",")[3]);
-                    localStorage.setItem("life", req.responseText.split(",")[4]);
-                    localStorage.setItem("learn", req.responseText.split(",")[5]);
+                if (req.responseText.split("/meow/")[0] == "done") {
+                    localStorage.setItem("token", req.responseText.split("/meow/")[1]);
+                    localStorage.setItem("name", req.responseText.split("/meow/")[2]);
+                    localStorage.setItem("card", req.responseText.split("/meow/")[3]);
+                    localStorage.setItem("life", req.responseText.split("/meow/")[4]);
+                    localStorage.setItem("learn", req.responseText.split("/meow/")[5]);
                     localStorage.setItem("cardtime", new Date().getTime());
                     document.getElementById("test-swipe-1").innerHTML = localStorage.getItem("card");
                     document.getElementById("test-swipe-2").innerHTML = localStorage.getItem("life");
@@ -133,12 +133,16 @@ var app = {
         document.addEventListener('DeviceReady', this.ready.bind(this), false);
         if (!localStorage.getItem("firstrun")) {
             document.location = "firstrun.html";
-        }
+        } 
         if (!localStorage.getItem("loged")) {
             document.location = "login.html";
         }
     },
     ready: function () {
+        if(localStorage.getItem("firstrun")!="done"){
+            M.FeatureDiscovery.init(document.querySelector('.tap-target'),{}).open();
+            localStorage.setItem("firstrun","done");
+        }
         if (localStorage.getItem("token")) {
             var outdate= new Date().getTime() -1800000;//每半小时刷新
             if(parseInt(localStorage.getItem("cardtime"))<outdate){
@@ -157,7 +161,7 @@ var app = {
         M.FloatingActionButton.init(document.querySelector('.fixed-action-btn'), {
             hoverEnabled: false
         });
-        var instance = M.Tabs.init(document.getElementById("slide"), {
+        M.Tabs.init(document.getElementById("slide"), {
             swipeable: true
         });
         document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);

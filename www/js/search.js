@@ -1,19 +1,22 @@
-if (window.Worker && localStorage.getItem("webworker")) {//检测是否支持多线程
+if (window.Worker && localStorage.getItem("webworker")) { //检测是否支持多线程
     console.log("webworker is on");
     var worker;
-    worker = new Worker("/www/js/search_worker.js");
+    worker = new Worker("/www/js/score_worker.js");
     worker.onmessage = function (e) {
         document.getElementById("list").innerHTML = e.data;
     }
-}else{
-    var list,all;
+} else {
+    var list, all;
+    var data = new FormData;
+    data.append("UID", localStorage.getItem("uid"));
+    data.append("TOKEN", localStorage.getItem("token"));
     var xhr = new XMLHttpRequest;
-    xhr.open("get", localStorage.getItem("server") + "/api/search.php", true);
+    xhr.open("post", localStorage.getItem("search"), true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                if (xhr.responseText.split(",")[0] == "done") {
-                    list = xhr.responseText.split(",");
+                if (xhr.responseText.split("/meow/")[0] == "done") {
+                    list = xhr.responseText.split("/meow/");
                     all = list.length
                 } else {
                     dialogAlert(xhr.responseText);
@@ -24,43 +27,54 @@ if (window.Worker && localStorage.getItem("webworker")) {//检测是否支持多
             }
         }
     }
-    xhr.send();
+    xhr.send(data);
 }
 
 function flash() {
-    if (window.Worker && localStorage.getItem("webworker")) {//自动搜索
-        worker.postMessage([document.getElementById("search").value, localStorage.getItem("server")]);
-    }else{
+    if (window.Worker && localStorage.getItem("webworker")) { //自动搜索
+        worker.postMessage([document.getElementById("search").value, localStorage.getItem("search"), localStorage.getItem("uid"), localStorage.getItem("token")]);
+    } else {
         var now = 1,
-        ret = "";
-    while (now < all) {
-        if (list[now+1].toUpperCase().indexOf(document.getElementById("search").value.toUpperCase()) > -1) {
-            ret+='<a href="#" class="collection-item" onclick="ati('+"'"+list[now]+"'"+')">'+list[now+1]+'</a>'
+            ret = "";
+        while (now < all) {
+            if (list[now + 2].toUpperCase().indexOf(document.getElementById("search").value.toUpperCase()) > -1) {
+                ret += '<a href="#" class="collection-item" onclick="ati(' + "'" + list[now + 1] + "'" + ',' + "'" + list[now] + "'" + ')">' + list[now + 2] + '</a>';
+            }
+            now += 3;
         }
-        now += 2;
-    }
-    document.getElementById("list").innerHTML=ret;
+        document.getElementById("list").innerHTML = ret;
     }
 
 }
+
 function dialogAlert(message, title, buttonname, callback) { //通知服务
     title = title || "错误";
     buttonname = buttonname || "确定";
     callback = callback || function () {
         return;
     }
-    if(navigator.notification){
+    if (navigator.notification) {
         navigator.notification.alert(message, callback, title, buttonname);
-    }else{
+    } else {
         alert(message);
     }
 }
-function ati(ve) { //动画跳转
-    sessionStorage.setItem("atid",ve);
-    document.body.addEventListener("animationend", function () {
-        document.location = "ative.html";
-    }.bind(this))
-    document.body.style.animation = "hidden 0.3s forwards";
+
+function ati(atid, atvalue) { //动画跳转
+    if (atid == "00003") {
+        sessionStorage.setItem("sphere", atvalue);
+        document.body.addEventListener("animationend", function () {
+            document.location = "sphere.html";
+        }.bind(this))
+        document.body.style.animation = "hidden 0.3s forwards";
+    } else {
+        sessionStorage.setItem("atid", atid);
+        sessionStorage.setItem("atvalue", atvalue)
+        document.body.addEventListener("animationend", function () {
+            document.location = "ative.html";
+        }.bind(this))
+        document.body.style.animation = "hidden 0.3s forwards";
+    }
 }
 var app = {
     // Application Constructor

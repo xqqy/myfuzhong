@@ -13,16 +13,20 @@
 </head>
 
 <body>
-    <nav class="nav-extended  light-blue">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">小程序</a>
-        </div>
-    </nav>
+        <nav class="nav-extended light-blue">
+                <div class="nav-wrapper">
+                    <span style="font-family: 'Material Icons';font-size: 30px" onclick="app.onBackKeyDown()">arrow_back</span>
+                    <a href="#" class="brand-logo">
+                        小程序
+                    </a>
+                </div>
+            </nav>
     <div class="nav-content">
         <iframe id="iframe" seamless sandbox="allow-forms" style="width:100%;height:inherit;border:none"></iframe>
         <div id="buttons" class="buttons">
             <button class="waves-effect waves-light btn light-blue darken-2 button" id="focus">关注</button>
             <button class="waves-effect waves-light btn light-blue darken-2 button" id="join">加入</button>
+            <button class="waves-effect waves-light btn light-blue darken-2 button" id="verify">验证</button>
         </div>
     </div>
 </body>

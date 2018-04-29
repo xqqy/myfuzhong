@@ -35,13 +35,13 @@ function login() { //登录
         if (req.readyState == 4) {
             document.getElementById("loading").style.display="none";
             if (req.status == 200) {
-                if (req.responseText.split(",")[0] == "done") {
+                if (req.responseText.split("/meow/")[0] == "done") {
                     localStorage.setItem("uid",document.getElementById("UID").value);
-                    localStorage.setItem("token", req.responseText.split(",")[1]);
-                    localStorage.setItem("name", req.responseText.split(",")[2]);
-                    localStorage.setItem("card", req.responseText.split(",")[3]);
-                    localStorage.setItem("life", req.responseText.split(",")[4]);
-                    localStorage.setItem("learn", req.responseText.split(",")[5]);
+                    localStorage.setItem("token", req.responseText.split("/meow/")[1]);
+                    localStorage.setItem("name", req.responseText.split("/meow/")[2]);
+                    localStorage.setItem("card", req.responseText.split("/meow/")[3]);
+                    localStorage.setItem("life", req.responseText.split("/meow/")[4]);
+                    localStorage.setItem("learn", req.responseText.split("/meow/")[5]);
                     localStorage.setItem("cardtime",new Date().getTime())
                     jump();
                 } else {

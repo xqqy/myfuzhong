@@ -1,7 +1,6 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title>主页面</title>
   <link href="css/basic.css" rel="stylesheet">
@@ -50,29 +49,37 @@
 </div>
 
 
+<!--左下多功能按钮-->
+<div class="tap-target" data-target="menu">
+    <div class="tap-target-content" style="color:snow">
+      <h5>这里还有更多</h5>
+      <p>搜索功能、刷新页面和设置都在这里面哦！</p>
+    </div>
+  </div>
+
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
-      <i class="large material-icons">dehaze</i>
+    <a class="btn-floating btn-large red" id="menu">
+      <i class="large material-icons waves-effect waves-light">dehaze</i>
     </a>
     <ul>
-     <!-- <li>
-        <a class="btn-floating red" href="#" onclick="scan()">
-          <i class="material-icons">crop_free</i>
+     <!--<li>
+        <a class="btn-floating red" href="#" onclick="logout()">
+          <i class="material-icons">exit_to_app</i>
         </a>
       </li>-->
       <li>
-        <a class="btn-floating yellow darken-1" href="#" onclick="loc('search.html')">
-          <i class="material-icons">search</i>
+        <a class="btn-floating yellow darken-1" href="#" onclick="localStorage.setItem('search',localStorage.getItem('server')+'/api/search.php');loc('search.html')">
+          <i class="material-icons waves-effect waves-light">search</i>
         </a>
       </li>
       <li>
         <a class="btn-floating green" href="#" onclick="reflash()">
-          <i class="material-icons">autorenew</i>
+          <i class="material-icons waves-effect waves-light">autorenew</i>
         </a>
       </li>
       <li>
         <a class="btn-floating blue" href="#" onclick="loc('setting.html')">
-          <i class="material-icons">settings</i>
+          <i class="material-icons waves-effect waves-light">settings</i>
         </a>
       </li>
     </ul>

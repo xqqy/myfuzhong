@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link href="libs/materialize.min.css" rel="stylesheet">
+    <link href="libs/gicon.css" rel="stylesheet">
+    <link href="css/zyfz.css" rel="stylesheet">
+    <link href="css/basic.css" rel="stylesheet">
+    <script src="cordova.js"></script>
+    <script src="js/zyfz.js"></script>
+    <title>活动验证</title>
+</head>
+
+<body>
+    <nav class="nav-extended light-blue">
+        <div class="nav-wrapper">
+            <span style="font-family: 'Material Icons';font-size: 30px" onclick="app.onBackKeyDown()">arrow_back</span>
+            <a href="#" class="brand-logo">
+                活动验证
+            </a>
+        </div>
+    </nav>
+    <h3 id="help">请走到 完成验证，下图为该地点街景浏览</h3>
+    <iframe seamless style="height: 80%;width: 100%;border:none" id="iframe">
+        全景导览
+    </iframe>
+    <div id="buttons" class="buttons">
+        <button class="waves-effect waves-light btn light-blue darken-2 button" id="help">显示帮助信息</button>
+        <button class="waves-effect waves-light btn light-blue darken-2 button" id="map">地图导航</button>
+        <button class="waves-effect waves-light btn light-blue darken-2 button" id="guest">无法定位</button>
+    </div>
+</body>

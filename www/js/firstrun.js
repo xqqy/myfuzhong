@@ -24,7 +24,7 @@ var app = {
       localStorage.setItem("firstrun", "2.3.4.0");
       localStorage.setItem("now", "-1");
       localStorage.setItem("worker", "true");
-      localStorage.setItem("server", "http://39.106.99.226")
+      localStorage.setItem("server", "http://10.0.0.4")
       localStorage.setItem("aliyun", "https://a1-oss.oss-cn-beijing.aliyuncs.com");
     }
     document.getElementById("start").addEventListener("click",jump)

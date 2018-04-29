@@ -14,16 +14,19 @@
 </head>
 
 <body>
-    <nav class="nav-extended  light-blue">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">登录</a>
-        </div>
-        <div class="nav-content" id="loading">
-            <div class="progress light-blue lighten-4">
-                <div class="indeterminate light-blue darken-1"></div>
+        <nav class="nav-extended light-blue">
+                <div class="nav-wrapper">
+                    <span style="font-family: 'Material Icons';font-size: 30px" onclick="app.onBackKeyDown()">arrow_back</span>
+                    <a href="#" class="brand-logo">
+                        登录
+                    </a>
+                </div>
+                <div class="nav-content" id="loading">
+                        <div class="progress light-blue lighten-4">
+                            <div class="indeterminate light-blue darken-1"></div>
+                        </div>
             </div>
-        </div>
-    </nav>
+            </nav>
     <h2>欢迎</h2>
     <form class="col s12" action="javascript:login()">
 
@@ -42,9 +45,9 @@
         </div>
     </form>
     <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action" id="login">登录
-            <i class="material-icons right">send</i>
+        <i class="material-icons right">send</i>
     </button>
     <button class="waves-effect waves-light btn light-blue darken-2" id="guest">游客访问</button>
 </body>
- 
+
 </html>

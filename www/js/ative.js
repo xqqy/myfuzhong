@@ -10,35 +10,40 @@ function xhr() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
-                if (xhr.responseText.split("$")[0] == "done") {
-                    switch (xhr.responseText.split("$")[1]) {
+                if (xhr.responseText.split("/meow")[0] == "done") {
+                    switch (xhr.responseText.split("/meow/")[1]) {
                         case "1":
                             document.getElementById("iframe").sandbox = "allow-scripts allow-forms allow-modals";
-                            document.getElementById("iframe").srcdoc = "<script>var UID='" + localStorage.getItem("uid") + "',VALUE='" + sessionStorage.getItem("atvalue") + "',NAME='" + localStorage.getItem("name") + "',TOKEN='" + localStorage.getItem("token") + "',SERVER='" + localStorage.getItem("server") + "';</script>" + xhr.responseText.split("$")[2];
+                            document.getElementById("iframe").srcdoc = "<script>var UID='" + localStorage.getItem("uid") + "',VALUE='" + sessionStorage.getItem("atvalue") + "',NAME='" + localStorage.getItem("name") + "',TOKEN='" + localStorage.getItem("token") + "',SERVER='" + localStorage.getItem("server") + "';</script>" + xhr.responseText.split("/meow/")[2];
                             break;
                         case "-1":
                             document.getElementById("iframe").style.height = window.innerHeight - 104 + "px";
-                            document.getElementById("iframe").srcdoc = xhr.responseText.split("$")[2];
+                            document.getElementById("iframe").srcdoc = xhr.responseText.split("/meow/")[2];
                             document.getElementById("buttons").className = "ativeb";
-                            if (xhr.responseText.split("$")[3] == "1") {
+                            if (xhr.responseText.split("/meow/")[3] == "1") {
                                 document.getElementById("focus").innerHTML = "取消关注"
                                 document.getElementById("focus").addEventListener("click", rfative)
                             } else {
                                 document.getElementById("focus").addEventListener("click", afative)
                             }
-                            if (xhr.responseText.split("$")[4] == "0") {
+                            if (xhr.responseText.split("/meow/")[4] == "0") {
                                 document.getElementById("join").innerHTML = "加入活动"
                                 document.getElementById("join").addEventListener("click", jative)
                             } else {
                                 document.getElementById("join").className+=" disabled";
                             }
+                            if(xhr.responseText.split("/meow/")[5]=="0"){
+                                document.getElementById("verify").addEventListener("click",verify)
+                            }else{
+                                document.getElementById("verify").className+=" disabled";
+                            }
                             break;
                         default:
-                            document.getElementById("iframe").srcdoc = xhr.responseText.split("$")[2];
+                            document.getElementById("iframe").srcdoc = xhr.responseText.split("/meow/")[2];
 
                     }
                 } else {
-                    dialogAlert(xhr.response);
+                    dialogAlert(xhr.response.split("/meow/")[0]);
                 }
             } else {
                 dialogAlert("网络错误，HTTP代码：" + xhr.status);
@@ -48,6 +53,12 @@ function xhr() {
     xhr.send(data);
 }
 
+function verify(){
+    document.body.addEventListener("animationend", function () {
+        document.location = "zyfz.html";
+    });
+    document.body.style.animation = "hidden 0.3s forwards";
+}
 function afative() { //关注活动
     if(!localStorage.getItem("token")){
         dialogAlert("你没有登录")

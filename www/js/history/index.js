@@ -28,6 +28,7 @@ function getPosition() {
 
 	function onSuccess(position) {
 		app.done();
+		navigator.geolocation.clearWatch(watchID);
 		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '\n');
 		return;
 	};
