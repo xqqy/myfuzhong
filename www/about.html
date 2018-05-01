@@ -1,33 +1,42 @@
-<!DOCTYPE html>
-
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>关于</title>
-    <link rel="stylesheet" type="text/css" href="css/about.css" />
-    <link rel="stylesheet" type="text/css" href="css/basic.css" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link href="libs/materialize.min.css" rel="stylesheet">
+    <link href="libs/gicon.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <script src="cordova.js"></script>
+    <script src="js/about.js"></script>
+    <link href="css/basic.css" rel="stylesheet">
+    <script src="libs/materialize.min.js"></script>
 </head>
 
-<body>
-    <div id="login">
-        <h1>关于</h1>
-        <br />
-        <br /> 本App在Apache2.0协议保护下开源 作者：xqqy<br>
-北京师大附中、北京师范大学附属中学、北京师大附中校徽均是北京师范大学附属中学的标识，仅可用于本APP内。您并未因获得本APP而获得来自北京师范大学附属中学的任何担保、授权。
-        <button class="reg" id="license">完整许可协议</button>
-        <br />
-        <br />
-        <button class="reg" id="back">返回</button>
-        <br />
-        <br />
-    </div>
+<body style="background-image: unset">
+        <nav class="nav-extended light-blue">
+                <div class="nav-wrapper">
+                    <span style="font-size: 30px;line-height: 2" class="material-icons" onclick="app.onBackKeyDown()">arrow_back</span>
+                    <a href="#" class="brand-logo">
+                        关于
+                    </a>
+                </div>
+            </nav>
+
+            <div class="row">
+                <div class="col s12 m3" id="middle">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="img/welcome.jpg">
+                        </div>
+                        <div class="card-content">
+                            <p>版本：2.4.2.3</p>
+                            <p>本App是智慧附中系统的一部分，受到Apache2.0协议的保护</p>
+                            <p>北京师大附中、北京师大附中校徽为北京师范大学附属中学所有标志，您未因获得此App而获得来自北京师范大学附属中学的任何担保或承诺</p>
+                            <p>本App为XQQY制作并依法享有著作权。</p>
+                        <div class="card-action">
+                            <a href="http://www.apache.org/licenses/LICENSE-2.0" id="guest">完整协议</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </body>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/about.js"></script>
-<link href="css/basic.css" rel="stylesheet">
-
-</html>
-
-<!--本应用在Apache License2.0协议下开源，您可以在关于页面下载到许可协议。在输入指令页面输入about即可打开-->
-<!--This application is open source under Apache License2.0, You can get License in about page,open it by entry "about" in command page-->

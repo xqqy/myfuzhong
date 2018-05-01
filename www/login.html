@@ -5,8 +5,8 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>登录</title>
     <link href="css/basic.css" rel="stylesheet">
-    <link href="libs/materialize.min.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
+    <link href="libs/materialize.min.css" rel="stylesheet">
     <link href="libs/gicon.css" rel="stylesheet">
     <script src="cordova.js"></script>
     <script src="libs/materialize.min.js"></script>
@@ -14,40 +14,45 @@
 </head>
 
 <body>
-        <nav class="nav-extended light-blue">
-                <div class="nav-wrapper">
-                    <span style="font-family: 'Material Icons';font-size: 30px" onclick="app.onBackKeyDown()">arrow_back</span>
-                    <a href="#" class="brand-logo">
-                        登录
+
+    <div class="row">
+        <div class="col s12 m3" id="middle">
+            <div class="card">
+                <div class="card-image">
+                    <img src="img/welcome.jpg">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red">
+                        <i class="material-icons" id="login">send</i>
                     </a>
-                </div>
-                <div class="nav-content" id="loading">
+                    <div class="nav-content" id="loading">
                         <div class="progress light-blue lighten-4">
                             <div class="indeterminate light-blue darken-1"></div>
                         </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <form action="javascript:login()">
+                        <div class="row">
+                            <div class="input-field">
+                                <input id="UID" type="text" required="required">
+                                <label for="UID">7位学号</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input id="PSWD" type="password" required="required">
+                                <label for="PSWD">密码</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-action">
+                    <a href="#" id="guest">游客访问</a>
+                </div>
             </div>
-            </nav>
-    <h2>欢迎</h2>
-    <form class="col s12" action="javascript:login()">
-
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="UID" type="text" required="required">
-                <label for="UID">7位学号</label>
-            </div>
-
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="PSWD" type="password" required="required">
-                <label for="PSWD">密码</label>
-            </div>
-        </div>
-    </form>
-    <button class="btn waves-effect waves-light light-blue darken-2" type="submit" name="action" id="login">登录
-        <i class="material-icons right">send</i>
-    </button>
-    <button class="waves-effect waves-light btn light-blue darken-2" id="guest">游客访问</button>
+    </div>
+
+
 </body>
 
 </html>

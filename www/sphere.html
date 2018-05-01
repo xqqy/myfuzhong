@@ -16,16 +16,62 @@
     <meta name="applicable-device" content="mobile">
     <!-- 页面关键词-->
     <link rel="stylesheet" href="css/sphere.css">
+    <link rel="stylesheet" href="css/basic.css">
     <script src="libs/three.js"></script>
     <script src="libs/photo-sphere-viewer.js"></script>
+    <script src="libs/materialize.min.js"></script>
+    <link rel="stylesheet" href="libs/materialize.min.css">
     <script type="text/javascript" src="cordova.js"></script>
     <!---->
     <script src="js/sphere.js"></script>
 </head>
 
 <body>
-    
-    <h1 id="txt">全景导览服务正在加载</h1>
+
+    <div class="col s12 m4 center" id="txt">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div id="main">
         <div id="container" style="width: 100%; height: 100%;"></div>
     </div>

@@ -1,9 +1,9 @@
 function loadimg() {
     var div = document.getElementById('container');
-    if(localStorage.getItem("aliyun_oss")){
+    if(localStorage.getItem("oss")){
         var PSV = new PhotoSphereViewer({
             // 全景图的完整路径
-            panorama: localStorage.getItem("aliyun")+"/"+sessionStorage.getItem("sphere")+".jpg",
+            panorama: localStorage.getItem("yun")+"/"+sessionStorage.getItem("sphere")+".jpg",
     
             // 放全景图的元素
             container: div,
@@ -16,8 +16,10 @@ function loadimg() {
     
             // 可选，默认值null，全景图容器的最终尺寸。例如：{width: 500, height: 300}。
             size: {
-                width: '100%',
-                height: parseFloat(window.innerHeight) + 'px' //让全景图刚好撑满屏幕
+                /*width: '100%',
+                height: parseFloat(window.innerHeight) + 'px' //让全景图刚好撑满屏幕*/
+                width:'100%',
+                height:'100%'
             },
             loading_msg: "",
             onready: imgready
@@ -54,18 +56,22 @@ function imgready() {
     document.getElementById("main").style.animation = "showen 0.6s forwards";
 }
 
+
 var app = {
     // Application Constructor
     initialize: function () {
-        document.addEventListener('DeviceReady', this.ready.bind(this), false);    },
+        document.addEventListener('DeviceReady', this.ready.bind(this));
+    },
     ready: function () {
-        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
+        document.body.style.animation = "showen 0.3s forwards";
         loadimg();
-        document.getElementById("txt").style.animation = "showen 0.3s forwards";
+        if (!(self.frameElement && self.frameElement.tagName == "IFRAME")) { 
+            document.addEventListener("backbutton", app.onBackKeyDown.bind(this));
+        }
     },
     onBackKeyDown: function (e) {
         document.body.addEventListener("animationend", function () {
-            document.location = "index.html";
+            document.location = "search.html";
         });
         document.body.style.animation = "hidden 0.3s forwards";
     }

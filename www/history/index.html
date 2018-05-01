@@ -18,8 +18,9 @@
     under the License.
 -->
 <html>
-    <head>
-        <!--
+
+<head>
+    <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
         Some notes:
@@ -28,42 +29,57 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href="../libs/materialize.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../css/history/index.css">
-        <link href="../css/basic.css" rel="stylesheet">
-        
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href="../libs/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/history/index.css">
+    <link href="../css/basic.css" rel="stylesheet">
+    <link href="../libs/gicon.css" rel="stylesheet">
 
 
-        <title>首页</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1 id="h1">漫游附中小游戏-加载中</h1>
-            <div id="ative" class="blink">
-                <p class="event ative0">cordova正在准备</p>
-                <p class="event ative1" id="dtme">定位中</p>
-                <p class="event ative2" style="background-color:rgb(59, 145, 73)">加载完成</p>
-            </div>
+
+    <title>首页</title>
+</head>
+
+<body>
+    <div class="nav-content">
+    <div class="app">
+        <h1 id="h1">漫游附中小游戏-加载中</h1>
+        <div id="ative" class="blink">
+            <p class="event ative0">cordova正在准备</p>
+            <p class="event ative1" id="dtme">定位中</p>
+            <p class="event ative2" style="background-color:rgb(59, 145, 73)">加载完成</p>
         </div>
-        <div class="ative2 all">
-                <a class='dropdown-trigger btn waves-effect waves-light light-blue darken-1' href='#' data-target='dropdown1' id="select">关卡选择</a>
-                <!-- Dropdown Structure -->
-                <ul id='dropdown1' class='dropdown-content'>
-                  <li><a href="#!" onclick="cls(0)">第一关</a></li>
-                  <li><a href="#!" onclick="cls(1)">第二关</a></li>
-                  <li><a href="#!" onclick="cls(2)">第三关</a></li>
-                  <li><a href="#!" onclick="cls(3)">第四关</a></li>
-                  <li><a href="#!" onclick="cls(4)">第五关</a></li>
-                </ul>
-            <button id="game" class="btn waves-effect waves-light light-blue darken-1">开始</button>
+    </div>
+    <div class="ative2 all">
+        <a class='dropdown-trigger btn waves-effect waves-light light-blue darken-1' href='#' data-target='dropdown1' id="select">关卡选择</a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <li>
+                <a href="#!" onclick="cls(0)">第一关</a>
+            </li>
+            <li>
+                <a href="#!" onclick="cls(1)">第二关</a>
+            </li>
+            <li>
+                <a href="#!" onclick="cls(2)">第三关</a>
+            </li>
+            <li>
+                <a href="#!" onclick="cls(3)">第四关</a>
+            </li>
+            <li>
+                <a href="#!" onclick="cls(4)">第五关</a>
+            </li>
+        </ul>
+        <button id="game" class="btn waves-effect waves-light light-blue darken-1">开始</button>
         <script type="text/javascript" src="../cordova.js"></script>
         <script type="text/javascript" src="../js/history/index.js"></script>
         <script type="text/javascript" src="../libs/materialize.min.js"></script>
     </div>
+    </div>
     <a href="https://xqqy11.top/wordpress/38/" style="font-size:15px">查看在线帮助</a>
-    </body>
+</body>
+
 </html>

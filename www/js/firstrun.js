@@ -24,8 +24,8 @@ var app = {
       localStorage.setItem("firstrun", "2.3.4.0");
       localStorage.setItem("now", "-1");
       localStorage.setItem("worker", "true");
-      localStorage.setItem("server", "http://10.0.0.4")
-      localStorage.setItem("aliyun", "https://a1-oss.oss-cn-beijing.aliyuncs.com");
+      localStorage.setItem("server", "https://xqqy11.top")
+      localStorage.setItem("yun", "https://myfuzhong-1256504649.cos-website.ap-beijing.myqcloud.com");
     }
     document.getElementById("start").addEventListener("click",jump)
   },

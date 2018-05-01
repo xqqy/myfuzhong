@@ -12,14 +12,14 @@
 </head>
 
 <body>
-        <nav class="nav-extended light-blue">
-                <div class="nav-wrapper">
-                    <span style="font-family: 'Material Icons';font-size: 30px" onclick="app.onBackKeyDown()">arrow_back</span>
-                    <a href="#" class="brand-logo">
-                        设置
-                    </a>
-                </div>
-            </nav>
+    <nav class="nav-extended light-blue">
+        <div class="nav-wrapper">
+            <span style="font-size: 30px;line-height: 2" class="material-icons" onclick="app.onBackKeyDown()">arrow_back</span>
+            <a href="#" class="brand-logo">
+                设置
+            </a>
+        </div>
+    </nav>
     <div class="switch">
         多线程刷新
         <label class="right">
@@ -27,13 +27,31 @@
             <span class="lever"></span>
         </label>
     </div>
+    <br>
     <div class="switch">
-        阿里云OSS加速
+        载入高清大图
         <label class="right">
-            <input type="checkbox" onchange="change('aliyun_oss')" id="aliyun_oss">
+            <input type="checkbox" onchange="change('oss')" id="oss">
             <span class="lever"></span>
         </label>
     </div>
+    <br>
+    <div class="switch">
+        全景浏览显示返回（可能使全景浏览不工作）
+        <label class="right">
+            <input type="checkbox" onchange="change('spback')" id="debug">
+            <span class="lever"></span>
+        </label>
+    </div>
+    <br>
+    <div class="switch">
+        显示更多动画（可能使返回键不工作）
+        <label class="right">
+            <input type="checkbox" onchange="change('flash')" id="debug">
+            <span class="lever"></span>
+        </label>
+    </div>
+    <br>
     <div class="switch">
         开发者模式
         <label class="right">
@@ -41,9 +59,13 @@
             <span class="lever"></span>
         </label>
     </div>
+    <br>
+    <br>
     <div>
-            <button class="waves-effect waves-light btn light-blue darken-2" onclick="loc('about.html')" id="about">关于</button><br><br>
-            <button class="waves-effect waves-light btn light-blue darken-2" onclick="cls()" id="clear">清除数据</button>
+        <button class="waves-effect waves-light btn light-blue darken-2" onclick="loc('about.html')" id="about">关于</button>
+        <br>
+        <br>
+        <button class="waves-effect waves-light btn light-blue darken-2" onclick="cls()" id="clear">清除数据</button>
     </div>
 
 </html>

@@ -8,6 +8,7 @@
     <link href="css/zyfz.css" rel="stylesheet">
     <link href="css/basic.css" rel="stylesheet">
     <script src="cordova.js"></script>
+    <script src="libs/materialize.min.js"></script>
     <script src="js/zyfz.js"></script>
     <title>活动验证</title>
 </head>
@@ -15,19 +16,40 @@
 <body>
     <nav class="nav-extended light-blue">
         <div class="nav-wrapper">
-            <span style="font-family: 'Material Icons';font-size: 30px" onclick="app.onBackKeyDown()">arrow_back</span>
+            <span style="font-size: 30px;line-height: 2" class="material-icons" onclick="app.onBackKeyDown()">arrow_back</span>
             <a href="#" class="brand-logo">
                 活动验证
             </a>
         </div>
     </nav>
-    <h3 id="help">请走到 完成验证，下图为该地点街景浏览</h3>
-    <iframe seamless style="height: 80%;width: 100%;border:none" id="iframe">
+    <div id="help" class="modal">
+        <div class="modal-content">
+            <h4>帮助信息</h4>
+            <p>你需要打开GPS定位，走到图示地点即可完成验证。如仍无法定位请手动上传与该地点的照相图片</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">好</a>
+        </div>
+    </div>
+    <div id="errors" class="modal">
+        <div class="modal-content">
+            <h4>帮助信息</h4>
+            <p>请确认你已经打开GPS定位，并尝试再次进入本页面。</p>
+            <p>如仍无法完成验证，请拍摄你与该建筑物和一起参加的同学的合影照片并将照片发送至xqqy@xqqy11.top</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">好</a>
+        </div>
+    </div>
+    <h3 id="help">请走到图示位置完成验证
+        <br>图片可以左右拖动</h3>
+    <iframe seamless style="height: 80%;width: 100%;border:none" id="iframe" >
         全景导览
     </iframe>
+    <!-- Modal Structure -->
     <div id="buttons" class="buttons">
-        <button class="waves-effect waves-light btn light-blue darken-2 button" id="help">显示帮助信息</button>
+        <button class="waves-effect waves-light btn light-blue darken-2 button" id="helper">显示帮助信息</button>
         <button class="waves-effect waves-light btn light-blue darken-2 button" id="map">地图导航</button>
-        <button class="waves-effect waves-light btn light-blue darken-2 button" id="guest">无法定位</button>
+        <button class="waves-effect waves-light btn light-blue darken-2 button" id="errorer">无法定位</button>
     </div>
 </body>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html style="height: 100%;overflow: scroll;">
+
+<head>
+    <meta charset="utf-8" />
+    <title>全景导览</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="libs/materialize.min.css" rel="stylesheet">
+    <link href="libs/gicon.css" rel="stylesheet">
+    <link href="css/basic.css" rel="stylesheet">
+    <link href="css/vr.css" rel="stylesheet">
+    <script src="cordova.js"></script>
+    <script src="libs/materialize.min.js"></script>
+    <script src="js/vr.js"></script>
+    <!-- 启用webAPP全屏模式-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 隐藏状态栏或者设置状态栏的颜色-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- 禁止缓存访问页面-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="applicable-device" content="mobile">
+</head>
+
+<body>
+    <iframe src="sphere.html" style="height:inherit;width:100%;border: 0" seamless></iframe>
+    <div id="buttons" class="buttons">
+        <button class="waves-effect waves-light btn-flat button" id="focus" onclick="app.onBackKeyDown()">
+            <i class="material-icons" style="font-size: 30px">arrow_back</i>
+        </button>
+    </div>
+</body>
+
+</html>

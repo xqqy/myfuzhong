@@ -18,18 +18,22 @@ function loc(ati) { //动画跳转
     document.body.style.animation = "hidden 0.3s forwards";
 }
 
-function getPosition(latitude, longitude) {
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 30000,
-        maximumage: 0
-    }
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+class getPosition  {
+    constructor(latitude, longitude) {
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.options ={
+            enableHighAccuracy: true,
+            timeout: 30000,
+            maximumage: 0
+        };
+        this.watchID = navigator.geolocation.watchPosition(this.onSuccess.bind(this), this.onError.bind(this),this.options);
+    };
+    onSuccess (position) {
 
-    function onSuccess(position) {
-        console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
+        console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + this.latitude + '目标经度' + this.longitude);
 
-        if (latitude - 0.0001 < position.coords.latitude && longitude + 0.0001 > position.coords.latitude && longitude - 0.0001 < position.coords.longitude && longitude + 0.0001 > position.coords.longitude) {
+        if (this.latitude - 0.0001 < position.coords.latitude && this.longitude + 0.0001 > position.coords.latitude && this.longitude - 0.0001 < position.coords.longitude && this.longitude + 0.0001 > position.coords.longitude) {
             var data = new FormData();
             data.append("UID", localStorage.getItem("uid"));
             data.append("TOKEN", localStorage.getItem("token"));
@@ -38,15 +42,18 @@ function getPosition(latitude, longitude) {
             xhr.open("post", localStorage.getItem("server") + "/api/gatived.php");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
-                    if (xhr.status == "200") {
-                        if (xhr.responseText.split("/meow/")[0] == "done") {
-                            dialogAlert("您已成功验证");
+                    if (xhr.status == 200) {
+                        if (xhr.responseText == "done") {
+                           /*dialogAlert("您已成功验证", "成功", "好", () => {
+                                loc("index.html");
+                            });*/
+                            alert("您已完成验证");
                             loc("index.html");
                         } else {
-                            dialogAlert(xhr.responseText);
+                            alert(xhr.responseText);
                         }
                     } else {
-                        dialogAlert("网络错误，HTTP代码:" + xhr.status);
+                        alert("网络错误，HTTP代码:" + xhr.status);
                     }
                 }
             }
@@ -54,8 +61,7 @@ function getPosition(latitude, longitude) {
         }
         return;
     };
-
-    function onError(error) {
+    onError (error) {
 
         console.log('code:' + error.code + '\n' + 'info:' + error.message)
         switch (error.code) {
@@ -72,6 +78,9 @@ function getPosition(latitude, longitude) {
                 dialogAlert('地理位置服务错误！代码: ' + error.code + '\n' + '默认错误帮助: ' + error.message + '\n', "错误", "确定", navigator.app.exitApp);
         }
         return;
+    };
+    clear(){
+        navigator.geolocation.clearWatch(this.watchID);
     }
 }
 
@@ -86,7 +95,10 @@ function init() {
         if (xhr.readyState == 4) {
             if (xhr.status == "200") {
                 if (xhr.responseText.split("/meow/")[0] == "done") {
-                    getPosition(xhr.responseText.split("/meow/")[1], xhr.responseText.split("/meow/")[2])
+                    geo=new getPosition(parseFloat(xhr.responseText.split("/meow/")[1]), parseFloat(xhr.responseText.split("/meow/")[2]));
+                    document.getElementById("map").addEventListener("click", () => {
+                        document.location = " http://apis.map.qq.com/tools/routeplan/eword=目标地点&epointx=" + xhr.responseText.split("/meow/")[2] + "&epointy=" + xhr.responseText.split("/meow/")[1] + "?referer=MyFuzhong&key=INFBZ-V5K3F-OOYJK-JKIG7-D2GUK-WRBQW"
+                    });
                 } else {
                     dialogAlert(xhr.responseText);
                 }
@@ -96,6 +108,8 @@ function init() {
         }
     }
     xhr.send(data);
+    sessionStorage.setItem("sphere", "AT" + sessionStorage.getItem("atid"));
+    document.getElementById("iframe").src = "sphere.html"
 }
 var app = {
     // Application Constructor
@@ -104,14 +118,26 @@ var app = {
 
     },
     ready: function () {
-        document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
+        if(localStorage.getItem("flash")){
+            document.addEventListener("backbutton", this.onBackKeyDown.bind(this), false);
+        }
         document.getElementById("iframe").style.height = window.innerHeight - 181 + "px";
         document.body.style.animation = "showen 0.3s forwards";
+
+        var help = M.Modal.init(document.getElementById("help"), {});
+        help.open();
+        var errors = M.Modal.init(document.getElementById("errors"), {});
+        document.getElementById("helper").addEventListener("click", function () {
+            help.open()
+        }.bind(this));
+        document.getElementById("errorer").addEventListener("click", function () {
+            errors.open()
+        }.bind(this))
         init()
     },
-    onBackKeyDown: function (e) {
+    onBackKeyDown: function () {
         document.body.addEventListener("animationend", function () {
-            document.location = "index.html";
+            document.location = "search.html";
         });
         document.body.style.animation = "hidden 0.3s forwards";
     }

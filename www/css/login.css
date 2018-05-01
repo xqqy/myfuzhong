@@ -1,9 +1,29 @@
-nav.nav-extended .nav-wrapper{
+nav.nav-extended .nav-wrapper {
     min-height: 50px;
 }
-nav .brand-logo{
+
+nav .brand-logo {
     font-size: 1.7rem;
 }
-#loading{
+
+#loading {
     display: none;
+}
+
+.row {
+    margin-bottom: auto;
+}
+
+#middle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+body {
+    background-image: url(../img/background.jpg)
 }

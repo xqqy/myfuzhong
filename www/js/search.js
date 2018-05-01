@@ -11,7 +11,7 @@ if (window.Worker && localStorage.getItem("webworker")) { //检测是否支持�
     data.append("UID", localStorage.getItem("uid"));
     data.append("TOKEN", localStorage.getItem("token"));
     var xhr = new XMLHttpRequest;
-    xhr.open("post", localStorage.getItem("search"), true);
+    xhr.open("post", sessionStorage.getItem("search"), true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
@@ -32,7 +32,7 @@ if (window.Worker && localStorage.getItem("webworker")) { //检测是否支持�
 
 function flash() {
     if (window.Worker && localStorage.getItem("webworker")) { //自动搜索
-        worker.postMessage([document.getElementById("search").value, localStorage.getItem("search"), localStorage.getItem("uid"), localStorage.getItem("token")]);
+        worker.postMessage([document.getElementById("search").value, sessionStorage.getItem("search"), localStorage.getItem("uid"), localStorage.getItem("token")]);
     } else {
         var now = 1,
             ret = "";
@@ -64,7 +64,11 @@ function ati(atid, atvalue) { //动画跳转
     if (atid == "00003") {
         sessionStorage.setItem("sphere", atvalue);
         document.body.addEventListener("animationend", function () {
-            document.location = "sphere.html";
+            if(localStorage.getItem("spback")){
+                document.localtion=vr.html
+            }else{
+                document.location = "sphere.html";
+            }
         }.bind(this))
         document.body.style.animation = "hidden 0.3s forwards";
     } else {

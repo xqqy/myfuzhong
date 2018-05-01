@@ -68,9 +68,9 @@ function getPosition() {
 	var watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 
 	function onSuccess(position) {
-		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp);
+		console.log("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + story[sessionStorage.getItem("game")].latitude + '目标经度' + story[sessionStorage.getItem("game")].longitude);
 		if (localStorage.getItem("debug")) {
-			document.getElementById("locate").innerHTML = ("位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + story[sessionStorage.getItem("game")].latitude + '目标经度' + story[sessionStorage.getItem("game")].longitude);
+			document.getElementById("locate").innerHTML = "位置信息：" + '\n' + '纬度: ' + position.coords.latitude + '\n' + '经度: ' + position.coords.longitude + '\n' + '获取时间戳: ' + position.timestamp + '目标纬度' + story[sessionStorage.getItem("game")].latitude + '目标经度' + story[sessionStorage.getItem("game")].longitude;
 		}
 
 		if (story[sessionStorage.getItem("game")].latitude - 0.0001 < position.coords.latitude && story[sessionStorage.getItem("game")].latitude + 0.0001 > position.coords.latitude && story[sessionStorage.getItem("game")].longitude - 0.0001 < position.coords.longitude && story[sessionStorage.getItem("game")].longitude + 0.0001 > position.coords.longitude) {

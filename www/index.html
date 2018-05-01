@@ -50,7 +50,7 @@
 
 
 <!--左下多功能按钮-->
-<div class="tap-target" data-target="menu">
+<div class="tap-target" data-target="menu" id="helper">
     <div class="tap-target-content" style="color:snow">
       <h5>这里还有更多</h5>
       <p>搜索功能、刷新页面和设置都在这里面哦！</p>
@@ -68,7 +68,7 @@
         </a>
       </li>-->
       <li>
-        <a class="btn-floating yellow darken-1" href="#" onclick="localStorage.setItem('search',localStorage.getItem('server')+'/api/search.php');loc('search.html')">
+        <a class="btn-floating yellow darken-1" href="#" onclick="sessionStorage.setItem('search',localStorage.getItem('server')+'/api/search.php');loc('search.html')">
           <i class="material-icons waves-effect waves-light">search</i>
         </a>
       </li>
