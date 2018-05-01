@@ -64,11 +64,7 @@ function ati(atid, atvalue) { //动画跳转
     if (atid == "00003") {
         sessionStorage.setItem("sphere", atvalue);
         document.body.addEventListener("animationend", function () {
-            if(localStorage.getItem("spback")){
-                document.localtion=vr.html
-            }else{
-                document.location = "sphere.html";
-            }
+                document.location = "vr.html"
         }.bind(this))
         document.body.style.animation = "hidden 0.3s forwards";
     } else {

@@ -1,4 +1,4 @@
-##智慧附中：Ver2.4.2.3
+##智慧附中：Ver2.4.2.4
 
 通过设置localStorage中的debug不为空来开启debug模式
 

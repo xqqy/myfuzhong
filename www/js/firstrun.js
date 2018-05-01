@@ -25,6 +25,7 @@ var app = {
       localStorage.setItem("now", "-1");
       localStorage.setItem("worker", "true");
       localStorage.setItem("server", "https://xqqy11.top")
+      localStorage.setItem("flash", "true");
       localStorage.setItem("yun", "https://myfuzhong-1256504649.cos-website.ap-beijing.myqcloud.com");
     }
     document.getElementById("start").addEventListener("click",jump)
